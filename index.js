@@ -2,15 +2,13 @@
 require('dotenv').config()
 const {
     Client,
-    RichEmbed,
-    Attachment
 } = require('discord.js');
 const client = new Client();
 client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Hey, Amethyst!');
 });
-//This code gives some one the 'Amethysts' role
+//This code gives someone the 'Amethysts' role
 client.on('guildMemberAdd', (guildMember, member) => {
     guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethysts"));
 });
