@@ -8,7 +8,7 @@ client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Hey, Amethyst!');
 });
-//This code gives someone the 'Amethysts' role
+//This code gives someone the 'Amethysts' role when they join
 client.on('guildMemberAdd', (guildMember, member) => {
     guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethysts"));
 });
