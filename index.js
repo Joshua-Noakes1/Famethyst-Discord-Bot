@@ -1,6 +1,6 @@
 // This code helps the bot join the server
 require('dotenv').config()
-const Client = require('discord.js');
+const {Client} = require('discord.js');
 const client = new Client();
 client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
