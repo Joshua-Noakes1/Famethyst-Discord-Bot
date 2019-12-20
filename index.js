@@ -15,22 +15,22 @@ client.on('guildMemberAdd', (guildMember, member) => {
 //This code responds to chat messages
 client.on('message', message => {
     if (message.content === 'Hey, Amethyst!'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
     if (message.content === 'hey, amethyst!'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
     if (message.content === 'Hey Amethyst!'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
     if (message.content === 'hey amethyst!'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
     if (message.content === 'hey amethyst'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
     if (message.content === 'hey a'){
-        message.reply('<@655534619633909763> Hey, Amethyst!')
+        message.reply(' <@655534619633909763> Hey, Amethyst!')
     }
 });
 //This code is a secure way of loging on using 'Dotenv (.env)' and the variable 'Bot_Token'
