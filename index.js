@@ -6,12 +6,12 @@
 // This code helps the bot join the server
 require('dotenv').config()
 const {Client, RichEmbed} = require('discord.js');
-const versno = ("Version 2.0")
+const versno = ("Version 2.2")
 const client = new Client();
 client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
     console.log(`Running ${versno}`)
-    client.user.setActivity(`Hey, Amethyst!, Now running ${versno}`);
+    client.user.setActivity(`Hey, Amethyst! | -help | Now running ${versno}`);
 });
 //This code gives someone the 'Amethysts' role when they join
 client.on('guildMemberAdd', (guildMember, member) => {
@@ -20,9 +20,9 @@ client.on('guildMemberAdd', (guildMember, member) => {
 //This code responds to chat messages
 client.on('message', message => {
     let amarole = message.guild.roles.find(role => role.name === "Amethysts");
-    const versno = ("Version 2.0")
+    const versno = ("Version 2.2")
     //This is for the (!info) command
-    if (message.content === "!info"){
+    if (message.content === "-info"){
         var authusernm = message.author.username
         const embed = {
             "title": "The Github",
