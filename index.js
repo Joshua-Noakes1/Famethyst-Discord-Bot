@@ -30,7 +30,7 @@ client.on('message', message => {
             "url": "http://bit.ly/FamBotCode",
             "color": 65280,
             "footer": {
-              "text": `Made by (Joshua Noakes#2986) | Asked by ${authusernm} | Now running ${versno}`
+              "text": `Made by (Joshua Noakes#2986) | Asked for ${authusernm} | Now running ${versno}`
             },
             "image": {
               "url": "https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339"
