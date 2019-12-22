@@ -11,7 +11,7 @@ const client = new Client();
 client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
     console.log(`Running ${versno}`)
-    client.user.setActivity(`Hey, Amethyst! | -help | ${versno}`);
+    client.user.setActivity(`Hey, Amethyst! | -info | ${versno}`);
 });
 //This code gives someone the 'Amethysts' role when they join
 client.on('guildMemberAdd', (guildMember, member) => {
