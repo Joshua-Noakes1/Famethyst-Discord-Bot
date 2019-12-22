@@ -52,7 +52,7 @@ client.on('message', message => {
                   "value": "[Perm-Link](https://discord.io/Famethyst)(https://discord.io/Famethyst)"
               },
                 {
-                  "name": "Want to add something?"
+                  "name": "Want to add something?",
                   "value": "[Email Me](mailto:joshthekid234@gmail.com?subject=Famethyst-Discord-Bot-Request)(joshthekid234@gmail.com)"
                 }
             ]
