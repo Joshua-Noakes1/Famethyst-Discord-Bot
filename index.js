@@ -53,7 +53,7 @@ client.on('message', message => {
               },
                 {
                   "name": "Want to add something?",
-                  "value": "[Email Me](mailto:joshthekid234@gmail.com?subject=Famethyst-Discord-Bot-Request)(joshthekid234@gmail.com)"
+                  "value": "Email me here => joshthekid234@gmail.com"
                 }
             ]
           };
