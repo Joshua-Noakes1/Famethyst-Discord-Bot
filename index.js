@@ -9,7 +9,7 @@ const {
   Client,
   RichEmbed
 } = require('discord.js');
-const versnu = ("Version 3")
+const versnu = ("Version 3.1")
 const client = new Client();
 const prefex = (`-`)
 client.on('ready', message => {
