@@ -94,7 +94,7 @@ client.on('message', message => {
   // 5x @Everyone (Hey Amethyst Amethyst)
   if (message.content == 'Hey Amethyst Amethyst') {
     message.channel.send(`@everyone`)
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 4; i++) {
       var authusernm = message.author.username
       const embeda = new RichEmbed()
         .setTitle("Hey, Amethysts")
