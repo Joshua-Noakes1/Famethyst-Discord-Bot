@@ -34,4 +34,4 @@ if (message.content == '-info'){
 }
 });
 //This code is a secure way of loging on using 'Dotenv (.env)' and the variable 'Bot_Token'
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token);
