@@ -9,7 +9,7 @@ const {
   Client,
   RichEmbed
 } = require('discord.js');
-const versnu = ("Version 2.01")
+const versnu = ("Version 2.02")
 const client = new Client();
 const prefex = (`-`)
 client.on('ready', message => {
@@ -41,14 +41,14 @@ client.on('message', message => {
         "url": "https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339"
       },
       "author": {
-        "name": "Famethyst-Bot Info"
+        "name": "Fam Bot 2 Info"
       },
       "fields": [{
-          "name": "What can Famethys-Bot do?",
-          "value": "The Famethys-Bot gives people roles and replys to \"Hey, Amethyst!\""
+          "name": "What can the fam bot do?",
+          "value": "The fam bot gives people roles and replys to \"Hey, Amethyst!\""
         },
         {
-          "name": "What else can you ask Famethys-Bot?",
+          "name": "What else can you ask fam bot?",
           "value": "You can say \"Hey, Amethyst!\" \"hey, amethyst!\" \"Hey Amethyst\" \"hey amethyst\" \"hey a\""
         },
         {
