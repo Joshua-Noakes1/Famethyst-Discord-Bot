@@ -44,6 +44,16 @@ client.on('guildMemberAdd', guildMember => {
 client.on('message', message => {
     var authusernm = message.author.username
 
+   if (message.content === '-setup1'){
+        message.delete(10)
+        message.guild.createRole({
+            name: 'Joshua\'s Role',
+            color: 'BLUE',
+          })
+            .then(role => console.log(`Created new role with name ${role.name} and color ${role.color}`) || message.member.addRole(message.guild.roles.find(role => role.name === "Joshua\'s Role")))
+            .catch(console.error)
+    }
+
     if (message.content == `${prefex}info`) {
         const embed = new RichEmbed()
             .setTitle(`${prefex}Fam Bot 2 Info`)
