@@ -1,117 +1,138 @@
 //*
-//Hello, this discord bot is used in the Famethyst server
-//Join it here (https://discord.io/Famethyst)
-//If you want to add anything dm me (Joshua Noakes#2968)
+// Okay, so i rewrote this code as it was a mess 
+// To test the bot go here (https://discord.io/Famethyst-20)
 //*
-// This code helps the bot join the server
+
+
+// The code below connects the bot and sets Global Variables within the code (Vars such as {versnum} and others).
 require('dotenv').config()
 const {
-  Client,
-  RichEmbed
+    Client,
+    RichEmbed
 } = require('discord.js');
-const versnu = ("Version 2.02")
+const vernum = ("Version 2.1")
 const client = new Client();
-const prefex = (`-`)
+const prefex = ("-")
 client.on('ready', message => {
-  console.log(`Logged in as ${client.user.tag}`)
-  console.log(`Running ${versnu}`)
-  client.user.setActivity(`Hey, Amethyst! | -info | ${versnu}`);
+    console.log(`Logged in as ${client.user.tag}`)
+    console.log(`Running ${vernum}`)
+    client.user.setActivity(`Hey a | -info | ${vernum}`)
+});
+
+
+// The code below gives someone the 'Amethyst' role when they join and says "@$their-username Welcome to the fam"
+client.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(channel => channel.name === "◯-welcome-new-amethysts-◯")
+    if (!channel) return;
+    channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
+});
+
+
+//*
+// This currently isn't used but i didn't want to take it out 
+//client.on("guildMemberRemove", member =>{
+//    const botlogchl = member.guild.channels.find(channel => channel.name === "◯-bot-logs-◯")
+//    if (!botlogchl) return;
+//    botlogchl.send(`${member} just left the server they were clowing <:PensiveClown:661405400020549632>`)
+//})
+//*
+
+
+// The code below responds to messages sent in the server (Join Here (https://discord.io/Famethyst-20))
+client.on('message', message => {
+    var authusernm = message.author.username
+
+    if (message.content == `${prefex}info`) {
+        const embed = new RichEmbed()
+            .setTitle(`${prefex}Fam Bot 2 Info`)
+            .setColor("0x65280")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setFooter(`Made by J.Noakes#2968 | fam ${authusernm} asked | ${vernum}`)
+            .addField("What can this bot do?", "You can readup on [github](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/)")
+            .addField("What commands are there?", "There are 8 commands at the moment they are \(Hey, Amethyst?, hey, amethyst?, hey amethyst?, Hey Amethyst!, hey, amethyst!, Hey Amethyst, hey amethyst, hey a")
+            .addField("Do you want to add something?", "Submit it as an issue on the [github page](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/)")
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'Hey, Amethyst?') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'hey, amethyst?') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'hey amethyst?') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'Hey, Amethyst!') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+            message.channel.send(embed)
+    }
+
+    if (message.content === 'hey, amethyst!') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'Hey Amethyst') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'hey amethyst') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
+
+    if (message.content === 'hey a') {
+        var authusernm = message.author.username
+        const embed = new RichEmbed()
+            .setTitle("Hey, Amethysts")
+            .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
+            .setColor("0xC49FD9")
+            .setFooter(`Fam ${authusernm} asked`)
+        message.channel.send(embed)
+    }
 
 });
-//This code gives someone the 'Amethysts' role when they join
-client.on('guildMemberAdd', (guildMember, member) => {
-  guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethyst"));
-});
-//This code responds to chat messages
-client.on('message', message => {
-  let args = message.content.substring(prefex.length).split(" ");
-  let amarole = message.guild.roles.find(role => role.name === "Amethyst");
-  //This is for the (-info) command
-  if (message.content === "-info") {
-    var authusernm = message.author.username
-    const embed = {
-      "title": "The Github",
-      "description": "You can look at the code on [Github](http://bit.ly/FamBotCode)",
-      "url": "http://bit.ly/FamBotCode",
-      "color": 65280,
-      "footer": {
-        "text": `Made by (J.Noakes#2986) | info for ${authusernm} | Now running ${versnu}`
-      },
-      "image": {
-        "url": "https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339"
-      },
-      "author": {
-        "name": "Fam Bot 2 Info"
-      },
-      "fields": [{
-          "name": "What can the fam bot do?",
-          "value": "The fam bot gives people roles and replys to \"Hey, Amethyst!\""
-        },
-        {
-          "name": "What else can you ask fam bot?",
-          "value": "You can say \"Hey, Amethyst!\" \"hey, amethyst!\" \"Hey Amethyst\" \"hey amethyst\" \"hey a\""
-        },
-        {
-          "name": "Want to add something?",
-          "value": "Email me here => joshthekid234@gmail.com"
-        }
-      ]
-    };
-    message.channel.send({
-      embed
-    });
-  }
-  //* Below is code for all the (Hey, Amethyst!) commands
-  if (message.content === 'Hey, Amethyst!') {
-    var authusernm = message.author.username
-    const embeda = new RichEmbed()
-      .setTitle("Hey, Amethysts")
-      .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
-      .setColor("0xC49FD9")
-      .setFooter(`Hey, Amethyst from ${authusernm}`)
-    message.channel.send(` ${amarole}`)
-    message.channel.send(embeda)
-  }
-  if (message.content === 'hey, amethyst!') {
-    var authusernm = message.author.username
-    const embeda = new RichEmbed()
-      .setTitle("Hey, Amethysts")
-      .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
-      .setColor("0xC49FD9")
-      .setFooter(`Hey, Amethyst from ${authusernm}`)
-    message.channel.send(` ${amarole}`)
-    message.channel.send(embeda)
-  }
-  if (message.content === 'Hey Amethyst') {
-    var authusernm = message.author.username
-    const embeda = new RichEmbed()
-      .setTitle("Hey, Amethysts")
-      .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
-      .setColor("0xC49FD9")
-      .setFooter(`Hey, Amethyst from ${authusernm}`)
-    message.channel.send(` ${amarole}`)
-    message.channel.send(embeda)
-  }
-  if (message.content === 'hey amethyst') {
-    var authusernm = message.author.username
-    const embeda = new RichEmbed()
-      .setTitle("Hey, Amethysts")
-      .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
-      .setColor("0xC49FD9")
-      .setFooter(`Hey, Amethyst from ${authusernm}`)
-    message.channel.send(` ${amarole}`)
-    message.channel.send(embeda)
-  }
-  if (message.content === 'hey a') {
-    var authusernm = message.author.username
-    const embeda = new RichEmbed()
-      .setTitle("Hey, Amethysts")
-      .setImage("https://vignette4.wikia.nocookie.net/steven-universe/images/8/8a/Amethyst_new.png/revision/latest/scale-to-width-down/1000?cb=20150430231339")
-      .setColor("0xC49FD9")
-      .setFooter(`Hey, Amethyst from ${authusernm}`)
-    message.channel.send(` ${amarole}`)
-    message.channel.send(embeda)
-  }
-});
-//This code is a secure way of loging on using 'Dotenv (.env)' and the variable 'Bot_Token'
 client.login(process.env.Bot_Token);
