@@ -22,9 +22,8 @@ client.on('ready', message => {
 
 // The code below gives someone the 'Amethyst' role when they join and says "@$their-username Welcome to the fam"
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(channel => channel.name === "◯-general-◯")
-    if (!channel) return;
-    guild
+   const channel = member.guild.channels.find(channel => channel.name === "◯-general-◯")
+   if (!channel) return;
     channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
 });
 client.on('guildMemberAdd', guildMember => {
