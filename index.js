@@ -24,10 +24,12 @@ client.on('ready', message => {
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find(channel => channel.name === "◯-welcome-new-amethysts-◯")
     if (!channel) return;
-    member.addRole(member.guild.roles.find(role => role.find === "Amethyst"))
+    guild
     channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
 });
-
+client.on('guildMemberAdd', guildMember => {
+    guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethyst"))
+});
 
 //*
 // This currently isn't used but i didn't want to take it out 
