@@ -24,6 +24,7 @@ client.on('ready', message => {
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find(channel => channel.name === "◯-welcome-new-amethysts-◯")
     if (!channel) return;
+    member.addRole(member.guild.roles.find(role => role.find === "Amethyst"))
     channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
 });
 
