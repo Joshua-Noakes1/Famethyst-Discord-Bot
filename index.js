@@ -21,12 +21,13 @@ client.on('ready', message => {
 
 
 // The code below gives someone the 'Amethyst' role when they join and says "@$their-username Welcome to the fam"
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(channel => channel.name === "◯-welcome-new-amethysts-◯")
-    if (!channel) return;
-    guild
-    channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
-});
+// The code below isn't used right now but i didn't want to take it out !
+//client.on('guildMemberAdd', member => {
+//    const channel = member.guild.channels.find(channel => channel.name === "◯-welcome-new-amethysts-◯")
+//    if (!channel) return;
+//   guild
+//    channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
+//});
 client.on('guildMemberAdd', guildMember => {
     guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethyst"))
 });
