@@ -138,4 +138,4 @@ client.on('message', message => {
     }
 
 });
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token);
