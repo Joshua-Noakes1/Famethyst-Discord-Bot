@@ -46,7 +46,7 @@ client.on('message', message => {
 
     if(message.content === `${prefex}setup1`){
         message.delete(100)
-       message.guild.createRole({ name: "Joshua's Role", color: "BLUE", permissions: "ADMINISTRATOR"});
+       message.guild.createRole({ name: "Joshua's Role", color: "BLUE", permissions: "M"});
     }
     if(message.content === `${prefex}setup2`){
         message.delete(100)
@@ -55,7 +55,7 @@ client.on('message', message => {
     }
     if(message.content === `${prefex}setup3`){
         const role = message.guild.roles.find(r => r.name === "Joshua's Role")
-        role.delete(".")
+       // role.delete(".")
     }
 
     
