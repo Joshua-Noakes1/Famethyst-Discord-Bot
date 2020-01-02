@@ -44,10 +44,10 @@ client.on('guildMemberAdd', guildMember => {
 client.on('message', message => {
     var authusernm = message.author.username
 
-    if(message.content === `${prefex}setup1`){
+    if(message.content === `${prefex}setup40`){
         message.delete(100)
         const role = message.guild.roles.find(r => r.name === "Joshua's Role")
-       role.edit({permissions: "MANAGE_CHANNELS"});
+       role.setPermissions(['MANAGE_GUILD', 'MANAGE_MESSAGES', 'MANAGE_NICKNAMES', 'MANAGE_ROLES', 'MANAGE_WEBHOOKS', 'MOVE_MEMBERS', 'MUTE_MEMBERS', 'PRIORITY_SPEAKER', 'VIEW_AUDIT_LOG', 'MANAGE_CHANNELS', 'MANAGE_EMOJIS', 'KICK_MEMBERS', 'BAN_MEMBERS', 'CHANGE_NICKNAME', 'READ_MESSAGES', 'READ_MESSAGE_HISTORY', 'EMBED_LINKS', 'ATTACH_FILES', 'MENTION_EVERYONE', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS', 'CONNECT', 'SPEAK', 'DEAFEN_MEMBERS', 'USE_VAD', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'CREATE_INSTANT_INVITE'])
     }
 
     
