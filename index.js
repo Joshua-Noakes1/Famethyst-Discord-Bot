@@ -9,8 +9,6 @@ const {
     Client,
     RichEmbed
 } = require('discord.js');
-const cheerio = require('cheerio');
-const request = require('request');
 const vernum = ("Version 3")
 const buildnumber = ("buildnumber +3050BA")
 const client = new Client();
