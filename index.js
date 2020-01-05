@@ -10,7 +10,7 @@ const {
     RichEmbed
 } = require('discord.js');
 const vernum = ("Version 3")
-const buildnumber = ("buildnumber +GH3050BA")
+const buildnumber = ("buildnumber +GH3055BA")
 const client = new Client();
 const prefex = ("-")
 client.on('ready', message => {
@@ -235,8 +235,8 @@ client.on('message', message => {
     // Voice Actor
 
     if (message.content === `${prefex}roles VA`) {
-        if (message.member.roles.find(r => r.name === "Voice Actor")) {
-            const Role = message.guild.roles.find(r => r.name === "Voice Actor")
+        if (message.member.roles.find(r => r.name === "Voice actor")) {
+            const Role = message.guild.roles.find(r => r.name === "Voice actor")
             message.delete(100)
             message.member.removeRole(Role)
             console.log(`${message.author.username} just left the ${Role.name}`)
@@ -250,8 +250,8 @@ client.on('message', message => {
                 .setFooter(`Thanks, ${message.author.username}`);
             message.author.send(embedrm)
         }
-        if (!message.member.roles.find(r => r.name === "Voice Actor")) {
-            const Role = message.guild.roles.find(r => r.name === "Voice Actor")
+        if (!message.member.roles.find(r => r.name === "Voice actor")) {
+            const Role = message.guild.roles.find(r => r.name === "Voice actor")
             const botlog = message.guild.channels.find(c => c.name === "bot-log")
             message.delete(100)
             message.member.addRole(Role).then(console.log(`${message.author.username} just got the ${Role.name} role`)).then(botlog.send(`${message.author.username} just got the ${Role.name} role!`))
