@@ -9,8 +9,8 @@ const {
     Client,
     RichEmbed
 } = require('discord.js');
-const vernum = ("Version 3")
-const buildnumber = ("buildnumber +GH3055BA")
+const vernum = ("Version 3.1")
+const buildnumber = ("buildnumber +GH3060BA")
 const client = new Client();
 const prefex = ("-")
 client.on('ready', message => {
@@ -23,7 +23,7 @@ client.on('ready', message => {
 // The code below gives someone the 'Amethyst' role when they join and says "@$their-username Welcome to the fam"
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find(c => c.name === "◯-general-◯")
-    const channel2 = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
+    const channel2 = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     if (!channel) return;
     channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
     channel2.send(`Lets welcome ${member.user.username} to the fam!`)
