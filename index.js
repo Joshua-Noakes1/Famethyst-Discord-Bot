@@ -24,13 +24,20 @@ client.on('ready', message => {
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find(c => c.name === "◯-general-◯")
     const channel2 = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
+    const Role = member.guild.roles.find(r => r.name === "Amethyst")
+    const BR = member.guild.roles.find(r => r.name === "BOTS")
     if (!channel) return;
+    if (!channel2) return;
+    if (!Role) return;
+    if (!BR) return;
     channel.send(`${member} Welcome to the fam bro 🎉<:FlushedClown:661405645878329345>`)
     channel2.send(`Lets welcome ${member.user.username} to the fam!`)
     console.log(`New member ${member.user.username}`)
-});
-client.on('guildMemberAdd', guildMember => {
-    guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Amethyst"))
+    member.addRole(Role)
+    if (member.user.bot) {
+        member.removeRole(Role)
+        member.addRole(BR)
+    }
 });
 
 // The code below responds to messages sent in the server (Join Here (https://discord.io/Famethyst-20))
