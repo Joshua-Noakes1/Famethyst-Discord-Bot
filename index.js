@@ -9,8 +9,8 @@ const {
     Client,
     RichEmbed
 } = require('discord.js');
-const vernum = ("Version 3.1")
-const buildnumber = ("buildnumber +GH3060BA")
+const vernum = ("Version 3.2")
+const buildnumber = ("buildnumber +GH3065BA")
 const client = new Client();
 const prefex = ("-")
 client.on('ready', message => {
