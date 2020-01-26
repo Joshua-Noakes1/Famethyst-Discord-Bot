@@ -13,7 +13,6 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const ping = require('minecraft-server-util')
 const vsNum = ("Version 4")
 const BudNum = ("Build Number LOGHB4")
 // Client.on is a listner and ready gets opened when the bot connects
@@ -97,23 +96,6 @@ client.on("message", async message => {
             .addField("What time will the server be up?", "The server will be up ***12am(UTC)Fri - 12am(UTC)Mon*** every week")
             .addField("What's the server status?", "[Check here](https://status.joshuanoakes.tk)")
         message.channel.send(embed)
-    }
-
-    //info mcs
-    if (message.content === `${prefex}info mcs`) {
-        ping('joshuanoakes.tk', 25565, (error, reponse) => {
-            if (error) console.log
-            const embed = new RichEmbed()
-                .setTitle('Minecraft Server Status')
-                .addField('Server IP', reponse.host)
-                .addField('Server Version', reponse.version)
-                .addField('Online Players', reponse.onlinePlayers)
-                .addField('Max Players', reponse.maxPlayers)
-                .addField('Server Status', '[Check here](https://status.joshuanoakes.tk)')
-                .setColor("DARK_GREEN")
-                .setTimestamp()
-            message.channel.send(embed)
-        })
     }
 
     // Hey amethyst
