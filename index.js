@@ -31,7 +31,7 @@ client.on("ready", () => {
 client.on("guildMemberAdd", member => {
     var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just joined the server! \nHey, ${member.user.username}`)
+        .setAuthor(`${member.user.username} has just joined the server!`)
         .setColor("0xC49FD9")
         .setImage("https://pm1.narvii.com/6360/a287991d58551ecc65857ad17dd1d291139c23c5_hq.jpg")
         .setTimestamp()
@@ -41,7 +41,7 @@ client.on("guildMemberAdd", member => {
 client.on("guildMemberRemove", member => {
     var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:Bro:661687976094466069>`)
+        .setAuthor(`${member.user.username} has just left the server!`)
         .setColor("0xC49FD9")
         .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
         .setTimestamp()
