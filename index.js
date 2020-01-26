@@ -29,7 +29,7 @@ client.on("ready", () => {
 });
 // Says when someone joins
 client.on("guildMemberAdd", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
         .setAuthor(`${member.user.username} has just joined the server! \nHey, ${member.user.username}`)
         .setColor("0xC49FD9")
@@ -39,7 +39,7 @@ client.on("guildMemberAdd", member => {
 })
 // Says when someone leaves!
 client.on("guildMemberRemove", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
         .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:Bro:661687976094466069>`)
         .setColor("0xC49FD9")
