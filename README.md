@@ -19,8 +19,9 @@ Hey, Amethyst
 Hey Amethyst  
 hey, amethyst  
 hey amethyst  
-hey, a  
-hey a  
+hey, a 
+Hey a
+hey a   
 ```  
 ___Thanks  
 -Joshua___
