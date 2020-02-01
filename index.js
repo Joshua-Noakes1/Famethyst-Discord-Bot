@@ -14,7 +14,7 @@ const client = new Client({
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
 const vsNum = ("Version 4")
-const BudNum = ("Build Number LOGHB4")
+const BudNum = ("Build Number DELTA-GITHUB-V4.01")
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
