@@ -13,8 +13,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.3")
-const BudNum = (`Build Number DELTA-GITHUB-${vsNum}`)
+const vsNum = ("Version 4.5")
+const BudNum = (`Build Number DELTA_${vsNum}`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -29,9 +29,9 @@ client.on("ready", () => {
 });
 // Says when someone joins
 client.on("guildMemberAdd", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just joined the server!`)
+        .setAuthor(`${member.user.username} has just joined the server! \nHey, ${member.user.username}`)
         .setColor("0xC49FD9")
         .setImage("https://pm1.narvii.com/6360/a287991d58551ecc65857ad17dd1d291139c23c5_hq.jpg")
         .setTimestamp()
@@ -39,9 +39,9 @@ client.on("guildMemberAdd", member => {
 })
 // Says when someone leaves!
 client.on("guildMemberRemove", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just left the server!`)
+        .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:Bro:661687976094466069>`)
         .setColor("0xC49FD9")
         .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
         .setTimestamp()
@@ -83,6 +83,19 @@ client.on("message", async message => {
             .setColor("0XC49FD9")
             .setTimestamp()
             .addField(`${message.author.username} you can find the commands on github`, `Check the github page [here](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot)`)
+        message.channel.send(embed)
+    }
+
+    //info mc 
+    if (message.content === `${prefex}info mc`) {
+        const embed = new RichEmbed()
+            .setAuthor(`⛏️ Minecraft Server Info ⛏️`)
+            .setColor("DARK_GREEN")
+            .setTimestamp()
+            .setDescription(`⛏️ Minecraft Server Info ⛏️`)
+            .addField("What's the IP?", "The IP is: mc.famethyst.ml")
+            .addField("What time will the server be up?", "The server will be up ***12am(UTC)Fri - 12am(UTC)Mon*** every week")
+            .addField("What's the server status?", "[Check here](https://updown.io/e1gx)")
         message.channel.send(embed)
     }
 
