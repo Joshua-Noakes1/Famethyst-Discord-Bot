@@ -13,8 +13,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4")
-const BudNum = ("Build Number DELTA-GITHUB-V4.01")
+const vsNum = ("Version 4.3")
+const BudNum = (`Build Number DELTA-GITHUB-${vsNum}`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
