@@ -86,18 +86,6 @@ client.on("message", async message => {
         message.channel.send(embed)
     }
 
-    //info mc 
-    if (message.content === `${prefex}info mc`) {
-        const embed = new RichEmbed()
-            .setAuthor(`⛏️ Minecraft Server Info ⛏️`)
-            .setColor("DARK_GREEN")
-            .setTimestamp()
-            .setDescription(`The Famethyst discord server now has a minecraft server <:PensiveClown:661405400020549632>`)
-            .addField("What time will the server be up?", "The server will be up ***12am(UTC)Fri - 12am(UTC)Mon*** every week")
-            .addField("What's the server status?", "[Check here](https://status.joshuanoakes.tk)")
-        message.channel.send(embed)
-    }
-
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuanoakes.tk)
 
