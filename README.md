@@ -5,9 +5,7 @@
 This bot has been built for the Famethyst server 2.0  
 Join it [here](https://discord.io/Famethyst-20)  
 ## Commands  
-### User commands  
-___User commands___
-#### The Hey Amethyst
+#### The Hey Amethyst Commands
 ```Code
 Hey, Amethyst?  
 hey, amethyst?  
