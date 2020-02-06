@@ -14,7 +14,7 @@ const client = new Client({
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
 const vsNum = ("Version 4.5")
-const BudNum = (`Build Number DELTA_${vsNum}`)
+const BudNum = (`DELTA_${vsNum}_4453`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -29,7 +29,8 @@ client.on("ready", () => {
 });
 // Says when someone joins
 client.on("guildMemberAdd", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
+    member.addRole(member.guild.roles.find(r => r.name === "Amethyst"))
+    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
         .setAuthor(`${member.user.username} has just joined the server! \nHey, ${member.user.username}`)
         .setColor("0xC49FD9")
@@ -39,7 +40,7 @@ client.on("guildMemberAdd", member => {
 })
 // Says when someone leaves!
 client.on("guildMemberRemove", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-log-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
         .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:Bro:661687976094466069>`)
         .setColor("0xC49FD9")
@@ -99,6 +100,12 @@ client.on("message", async message => {
         message.channel.send(embed)
     }
 
+    // info Debug_Info
+    if (message.content === `${prefex}!debug_info`) {
+        message.reply("I've sent you the debug info!")
+        message.delete()
+        message.author.send(`COMPILED: 6/2/20; 8:15PM | DEVICE: MACBOOK AIR 13" (IDV:4453) | BUILD: ${BudNum}`)
+    }
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuanoakes.tk)
 
