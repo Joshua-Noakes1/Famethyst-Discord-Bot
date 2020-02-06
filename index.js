@@ -251,4 +251,4 @@ client.on("message", async message => {
         message.channel.send(embed)
     }
 });
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token);
