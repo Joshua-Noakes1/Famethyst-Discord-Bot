@@ -13,8 +13,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.8")
-const BudNum = (`OMEGA_${vsNum}_4460`)
+const vsNum = ("Version 4.8.2")
+const BudNum = (`OMEGA_${vsNum}_4480`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -31,8 +31,10 @@ client.on("ready", () => {
 client.on("guildMemberAdd", member => {
     member.addRole(member.guild.roles.find(r => r.name === "Amethyst"))
     var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
+    const emote = member.guild.emojis.find(e => e.name === `FlushedClown`)
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just joined the server! \nHey, ${member.user.username}`)
+        .setAuthor(`${member.user.username} has just joined the server!`, member.user.avatarURL)
+        .setDescription(`Hey, ${member.user.username} ${emote}`)
         .setColor("0xC49FD9")
         .setImage("https://pm1.narvii.com/6360/a287991d58551ecc65857ad17dd1d291139c23c5_hq.jpg")
         .setTimestamp()
@@ -40,9 +42,11 @@ client.on("guildMemberAdd", member => {
 })
 // Says when someone leaves!
 client.on("guildMemberRemove", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
+    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯");
+    const emote = member.guild.emojis.find(e => e.name === `PensiveClown`)
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:PensiveClown:661405400020549632>`)
+        .setAuthor(`${member.user.username} has just left the server!`, member.user.avatarURL)
+        .setDescription(`Why? ${emote.toString()}`)
         .setColor("0xC49FD9")
         .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
         .setTimestamp()
@@ -58,6 +62,12 @@ client.on("message", async message => {
     // Caches a users member-status (best way i can say it (just who they are in the server)) if it cant find it alredy in the cache
     if (!message.member) member.member = await message.guild.fetchMember(message);
 
+    // test code 
+    if (message.content === `test`) {
+        const emote = client.emojis.find(e => e.name === "Block")
+
+        message.channel.send(`${emote}`)
+    }
     // info commands
     // info Server (guild)
     if (message.content === `${prefex}info server`) {
@@ -103,7 +113,7 @@ client.on("message", async message => {
     if (message.content === `${prefex}!debug_info`) {
         message.reply("I've sent you the debug info!")
         message.delete()
-        message.author.send(`COMPILED: 6/2/20; 10:27PM | DEVICE: MACBOOK AIR 13" (GITHUB-WEB) (IDV:4455) | BUILD: ${BudNum}`)
+        message.author.send(`COMPILED: 6/2/20; 11:21PM | DEVICE: MACBOOK AIR 13" (VSC) (IDV:4482) | BUILD: ${BudNum}`)
     }
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuanoakes.tk)
@@ -241,4 +251,4 @@ client.on("message", async message => {
         message.channel.send(embed)
     }
 });
-client.login(process.env.Bot_Token);
+client.login(process.env.Bot_Token_Beta);
