@@ -13,8 +13,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.7")
-const BudNum = (`DELTA_${vsNum}_4453`)
+const vsNum = ("Version 4.8")
+const BudNum = (`OMEGA_${vsNum}_4460`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -42,7 +42,7 @@ client.on("guildMemberAdd", member => {
 client.on("guildMemberRemove", member => {
     var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
     const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:Bro:661687976094466069>`)
+        .setAuthor(`${member.user.username} has just left the server!  \nWhy? <:PensiveClown:661405400020549632>`)
         .setColor("0xC49FD9")
         .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
         .setTimestamp()
@@ -96,7 +96,6 @@ client.on("message", async message => {
             .setDescription(`⛏️ Minecraft Server Info ⛏️`)
             .addField("What's the IP?", "The IP is: mc.famethyst.ml")
             .addField("What time will the server be up?", "The server will be up ***12am(UTC)Fri - 12am(UTC)Mon*** every week")
-            .addField("What's the server status?", "[Check here](https://updown.io/e1gx)")
         message.channel.send(embed)
     }
 
@@ -104,7 +103,7 @@ client.on("message", async message => {
     if (message.content === `${prefex}!debug_info`) {
         message.reply("I've sent you the debug info!")
         message.delete()
-        message.author.send(`COMPILED: 6/2/20; 8:15PM | DEVICE: MACBOOK AIR 13" (IDV:4453) | BUILD: ${BudNum}`)
+        message.author.send(`COMPILED: 6/2/20; 10:27PM | DEVICE: MACBOOK AIR 13" (GITHUB-WEB) (IDV:4455) | BUILD: ${BudNum}`)
     }
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuanoakes.tk)
