@@ -13,8 +13,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.8.2")
-const BudNum = (`OMEGA_${vsNum}_4480`)
+const vsNum = ("Version 4.8.3")
+const BudNum = (`OMEGA_${vsNum}_4485`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -23,7 +23,7 @@ client.on("ready", () => {
     console.log(``)
     client.user.setPresence({
         game: {
-            name: `Hey a | -info commands | ${vsNum}`
+            name: `Hey a | -info | ${vsNum}`
         }
     });
 });
@@ -113,10 +113,10 @@ client.on("message", async message => {
     if (message.content === `${prefex}!debug_info`) {
         message.reply("I've sent you the debug info!")
         message.delete()
-        message.author.send(`COMPILED: 6/2/20; 11:21PM | DEVICE: MACBOOK AIR 13" (VSC) (IDV:4482) | BUILD: ${BudNum}`)
+        message.author.send(`COMPILED: 7/2/20; 12:10AM | DEVICE: WINDOWS 10 PRO" (GITHUB-WEB) (IDV:5544) | BUILD: ${BudNum} n\[Edited user presence || from "Hey a | -info commands | ${vsNum}" to "Hey a | -info | ${vsNum}"]`)
     }
     // Hey amethyst
-    // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuanoakes.tk)
+    // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
 
     // (Channel Message = [ Hey ama message trigers])
     if (message.content === "Hey, Amethyst?") {
