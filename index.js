@@ -13,7 +13,7 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.8.3")
+const vsNum = ("Version 4.8.4")
 const BudNum = (`OMEGA_${vsNum}_4485`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
@@ -88,7 +88,7 @@ client.on("message", async message => {
     }
 
     // info commands
-    if (message.content === `${prefex}info commands`) {
+    if (message.content === `${prefex}info`) {
         const embed = new RichEmbed()
             .setAuthor(`Command info`)
             .setColor("0XC49FD9")
@@ -113,7 +113,8 @@ client.on("message", async message => {
     if (message.content === `${prefex}!debug_info`) {
         message.reply("I've sent you the debug info!")
         message.delete()
-        message.author.send(`COMPILED: 7/2/20; 12:10AM | DEVICE: WINDOWS 10 PRO" (GITHUB-WEB) (IDV:5544) | BUILD: ${BudNum} n\[Edited user presence || from "Hey a | -info commands | ${vsNum}" to "Hey a | -info | ${vsNum}"]`)
+        message.author.send(`COMPILED: 8/2/20; 16:16PM | DEVICE: MAC BOOKAIR 13" (GITHUB-WEB) (IDV:4456) | BUILD: ${BudNum}`)
+        message.author.send(`GITHUB-COMMENT: \"[Fixed -info]\"`)
     }
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
