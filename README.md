@@ -5,6 +5,14 @@
 This bot has been built for the Famethyst server 2.0  
 Join it [here](https://discord.io/Famethyst-20)  
 ## Commands  
+
+#### The info commands
+```Code
+-info server
+-info mc
+-!debug_info
+```
+
 #### The Hey Amethyst Commands
 ```Code
 Hey, Amethyst?  
