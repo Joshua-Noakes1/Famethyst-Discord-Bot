@@ -62,12 +62,6 @@ client.on("message", async message => {
     // Caches a users member-status (best way i can say it (just who they are in the server)) if it cant find it alredy in the cache
     if (!message.member) member.member = await message.guild.fetchMember(message);
 
-    // test code 
-    if (message.content === `test`) {
-        const emote = client.emojis.find(e => e.name === "Block")
-
-        message.channel.send(`${emote}`)
-    }
     // info commands
     // info Server (guild)
     if (message.content === `${prefex}info server`) {
