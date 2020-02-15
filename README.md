@@ -8,6 +8,7 @@ Join it [here](https://discord.io/Famethyst-20)
 
 #### The info commands
 ```Code
+-info
 -info server
 -info mc
 -!debug_info
