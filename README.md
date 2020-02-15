@@ -1,5 +1,5 @@
 # The Fam Bot 2.0
-[![HitCount](http://hits.dwyl.io/Joshua-Noakes1/Famethyst-Discord-Bot.svg)](http://hits.dwyl.io/Joshua-Noakes1/Famethyst-Discord-Bot)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FJoshua-Noakes1%2FFamethyst-Discord-Bot)
 [![Depend](https://david-dm.org/Joshua-Noakes1/Famethyst-Discord-Bot.svg)](https://david-dm.org/Joshua-Noakes1/Famethyst-Discord-Bot)
 ## Information  
 This bot has been built for the Famethyst server 2.0  
