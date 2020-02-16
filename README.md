@@ -4,7 +4,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/Joshua-Noakes1/Famethyst-Discord-Bot)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Joshua-Noakes1/Famethyst-Discord-Bot)  
 ![Discord](https://img.shields.io/discord/661399496537669632?color=purple&label=The%20Famethyst%20Discord%20Server&logo=discord)
-![Twitter Follow](https://img.shields.io/twitter/follow/jokeryoda?label=Follow%20Me%20On%20Twitter&style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/jokeryoda?label=@jokeryoda&style=social)
 ## Commands  
 
 #### The info commands
