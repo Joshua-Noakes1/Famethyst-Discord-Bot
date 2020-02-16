@@ -30,5 +30,8 @@ hey, a
 Hey a
 hey a   
 ```  
-___Thanks  
+## Licence
+This project is under the MIT Licence   
+you can read more [here](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/LICENSE)   
+___Thanks   
 -Joshua___
