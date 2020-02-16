@@ -120,21 +120,6 @@ client.on("message", async message => {
         message.reply("I've sent you the info!").then(msg => msg.delete(5000))
     }
 
-    if (message.content === `${prefex}gods` || !message.member.roles.find(r => r.name === "Joshua's Role")) {
-        message.delete(100)
-        const godsr = message.guild.roles.find(r => r.name === `The Gods`)
-        message.member.addRole(godsr)
-        message.author.send(`Done!`)
-    }
-    
-
-
-
-
-
-
-
-
      // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
 
