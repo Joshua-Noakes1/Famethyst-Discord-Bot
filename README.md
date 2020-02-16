@@ -1,10 +1,10 @@
 # The Fam Bot 2.0
 ![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FJoshua-Noakes1%2FFamethyst-Discord-Bot)
 [![Depend](https://david-dm.org/Joshua-Noakes1/Famethyst-Discord-Bot.svg)](https://david-dm.org/Joshua-Noakes1/Famethyst-Discord-Bot)
+![GitHub issues](https://img.shields.io/github/issues-raw/Joshua-Noakes1/Famethyst-Discord-Bot)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Joshua-Noakes1/Famethyst-Discord-Bot)  
 ![Discord](https://img.shields.io/discord/661399496537669632?color=purple&label=The%20Famethyst%20Discord%20Server&logo=discord)
-## Information  
-This bot has been built for the Famethyst server 2.0  
-Join it [here](https://discord.io/Famethyst-20)  
+![Twitter Follow](https://img.shields.io/twitter/follow/jokeryoda?label=Follow%20Me%20On%20Twitter&style=social)
 ## Commands  
 
 #### The info commands
