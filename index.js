@@ -13,14 +13,14 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 4.8.4")
-const BudNum = (`OMEGA_${vsNum}_4485`)
+const vsNum = ("Version 4.9")
+const BudNum = (`OMEGA_${vsNum}_4499`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
     console.log(`logged in as ${client.user.tag}`)
     console.log(`Running ${vsNum}`)
-    console.log(``)
+    console.log(`Running Build: ${BudNum}`)
     client.user.setPresence({
         game: {
             name: `Hey a | -info | ${vsNum}`
@@ -38,6 +38,7 @@ client.on("guildMemberAdd", member => {
         .setColor("0xC49FD9")
         .setImage("https://pm1.narvii.com/6360/a287991d58551ecc65857ad17dd1d291139c23c5_hq.jpg")
         .setTimestamp()
+        .setFooter(`There's now ${member.guild.memberCount} people here!`)
     general.send(embed)
 })
 // Says when someone leaves!
@@ -50,6 +51,7 @@ client.on("guildMemberRemove", member => {
         .setColor("0xC49FD9")
         .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
         .setTimestamp()
+        .setFooter(`There's now ${member.guild.memberCount} people here!`)
     general.send(embed)
 })
 
@@ -61,6 +63,8 @@ client.on("message", async message => {
     if (!message.guild) return;
     // Caches a users member-status (best way i can say it (just who they are in the server)) if it cant find it alredy in the cache
     if (!message.member) member.member = await message.guild.fetchMember(message);
+    // switch stateent
+    let args = message.content.substring(prefex.length).split(" ");
 
     // info commands
     // info Server (guild)
@@ -105,11 +109,25 @@ client.on("message", async message => {
 
     // info Debug_Info
     if (message.content === `${prefex}!debug_info`) {
-        message.reply("I've sent you the debug info!")
         message.delete()
-        message.author.send(`COMPILED: 8/2/20; 16:16PM | DEVICE: MAC BOOKAIR 13" (GITHUB-WEB) (IDV:4456) | BUILD: ${BudNum}`)
-        message.author.send(`GITHUB-COMMENT: \"[Fixed -info]\"`)
+        const embed = new RichEmbed()
+        .setTitle("Debug Info")
+        .setColor("0xC49FD9")
+        .setDescription(`COMPILED: 16/2/20; 11:04AM UTC | DEVICE: MAC BOOKAIR 13" (VSC) (IDV:4499) | BUILD: ${BudNum}`)
+        .setFooter(`GITHUB-COMMENT: \"[Fixed -info]\"`)
+        .setTimestamp()
+        message.author.send(embed)
+        message.reply("I've sent you the info!").then(msg => msg.delete(5000))
     }
+
+
+    switch (args[0]) {
+        case nick:
+            let fms = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]))
+            fms.guild.name(`${args[1]}`)
+            break;
+    }
+
     // Hey amethyst
     // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
 
