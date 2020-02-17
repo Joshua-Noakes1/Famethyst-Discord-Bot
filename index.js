@@ -1,8 +1,5 @@
 // Main bot config (inc. discord.js (https://discord.js.org) dotenv(https://www.npmjs.com/package/dotenv))
 require('dotenv').config()
-// Cheerio and Request grab images from google
-const cheerio = require('cheerio');
-const request = require('request');
 // This calls the Client class from discord.js (https://discord.js.org/#/docs/main/stable/class/Client)
 // This calls the RichEmbed class from discord.js (https://discord.js.org/#/docs/main/stable/class/RichEmbed)
 const {
@@ -17,8 +14,8 @@ const client = new Client({
 // Global Vars / Consts are defined here
 // Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
 const prefex = ("-");
-const vsNum = ("Version 5")
-const BudNum = (`DELTA_${vsNum}_5001`)
+const vsNum = ("Version 5.0.1")
+const BudNum = (`DELTA_${vsNum}_5002`)
 // Client.on is a listner and ready gets opened when the bot connects
 // its passed into a arrow function => and then used and things can be called on
 client.on("ready", () => {
@@ -131,7 +128,7 @@ client.on("message", async message => {
         const embed = new RichEmbed()
             .setTitle("Debug Info")
             .setColor("0xC49FD9")
-            .setDescription(`COMPILED: 16/2/20; 11:04AM UTC | DEVICE: MAC BOOKAIR 13" (VSC) (IDV:4499) | BUILD: ${BudNum}`)
+            .setDescription(`COMPILED: 17/2/20; 20:13PM UTC | DEVICE: MAC BOOKAIR 13" (GITHUB_WEB) (IDV:5501) | BUILD: ${BudNum}`)
             .addField("CHANGE LOG", "[CHANGELOG.MD](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/changelog.md)")
             .setTimestamp()
         message.author.send(embed)
