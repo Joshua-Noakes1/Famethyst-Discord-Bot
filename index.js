@@ -214,4 +214,4 @@ client.on("message", async message => {
     }
 });
 
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token);
