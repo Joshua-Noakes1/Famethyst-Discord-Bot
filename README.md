@@ -12,6 +12,11 @@
 -info
 -!debug_info
 ```
+#### Random Commands
+```Code
+  Linux
+  -Ping
+```
 
 #### The Hey Amethyst Commands
 (The commands are now case insensitive!)
