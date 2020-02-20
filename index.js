@@ -1,312 +1,217 @@
-// Main bot config (inc. discord.js (https://discord.js.org) dotenv(https://www.npmjs.com/package/dotenv))
-require('dotenv').config()
+// Famethyst Discord Server Bot, this bot is used for managing the server, I've rewritten the bot here so it uses args and swicth cases
+// Dotenv call in so the bot can be connected without exposing the token
+require('dotenv').config();
+// Discord.js call in
 // This calls the Client class from discord.js (https://discord.js.org/#/docs/main/stable/class/Client)
 // This calls the RichEmbed class from discord.js (https://discord.js.org/#/docs/main/stable/class/RichEmbed)
+// This calls the Attachment class from discord.js (https://discord.js.org/#/docs/main/stable/class/Attachment)
 const {
+    Discord,
     Client,
     RichEmbed,
     Attachment
-} = require("discord.js")
-// The bot is also blocked from doing @everyone (becuase no one wants that do they)
+} = require("discord.js");
+// This removes the bots ability to @everyone
 const client = new Client({
     disableEveryone: true
 });
-// Global Vars / Consts are defined here
-// Prefex : - (How to call it in code (ES6) tilda => (`[Command goes here]`) => (`${prefex} Command`))
-const prefex = ("-");
-const vsNum = ("Version 5.0.1")
-const BudNum = (`DELTA_${vsNum}_5002`)
-// Client.on is a listner and ready gets opened when the bot connects
-// its passed into a arrow function => and then used and things can be called on
+// All the major vars thats aren't to do with proper code like the version number and build number
+// So it can see messages without with prefix (-)
+const Prefix = ('');
+const Version_Number = ('Version 5.5');
+const Build_Number = ('Build Number: 5.3:5507');
+// The 'Ready' listner is key to letting discord know that the bot is ready to run
 client.on("ready", () => {
-    console.log(`logged in as ${client.user.tag}`)
-    console.log(`Running ${vsNum}`)
-    console.log(`Running Build: ${BudNum}`)
+    console.log(`The bot has connected with the username and tag ${client.user.tag} \nThe bot is also running ${Version_Number} and ${Build_Number}`);
     client.user.setPresence({
         game: {
-            name: `Hey a | -info | ${vsNum}`
+            name: `Hey a | -info | ${Version_Number}`
         }
     });
 });
-// Says when someone joins
-client.on("guildMemberAdd", member => {
-    member.addRole(member.guild.roles.find(r => r.name === "Amethyst"))
-    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯")
-    const emote = member.guild.emojis.find(e => e.name === `FlushedClown`)
-    const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just joined the server!`, member.user.avatarURL)
-        .setDescription(`Hey, ${member.user.username} ${emote}`)
-        .setColor("0xC49FD9")
-        .setImage("https://pm1.narvii.com/6360/a287991d58551ecc65857ad17dd1d291139c23c5_hq.jpg")
-        .setTimestamp()
-        .setFooter(`There's now ${member.guild.memberCount} people here!`)
-    general.send(embed).then(msg => msg.react('😳'))
-    if (member.guild.memberCount === 69) {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey ${member.user.username} you're our 69th member! 😳`, member.user.avatarURL)
-            .setDescription(`${member.user.username} you're our 69th member nice`)
-            .setImage("https://66.media.tumblr.com/7697d802896c61fb9e8321f298ec1e97/tumblr_inline_nvpzh1xM1e1r1t1f7_540.png")
-            .setTimestamp()
-            .setColor("0xC49FD9")
-            .setFooter("Nice")
-        member.send(embed).then(general.send(`Woah ${member.user.username} is our 69th member *Nice*`))
-    }
-})
-// Says when someone leaves!
-client.on("guildMemberRemove", member => {
-    var general = member.guild.channels.find(c => c.name === "◯-bot-logs-◯");
-    const emote = member.guild.emojis.find(e => e.name === `PensiveClown`)
-    const embed = new RichEmbed()
-        .setAuthor(`${member.user.username} has just left the server!`, member.user.avatarURL)
-        .setDescription(`Why? ${emote.toString()}`)
-        .setColor("0xC49FD9")
-        .setImage("https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg")
-        .setTimestamp()
-        .setFooter(`There's now ${member.guild.memberCount} people here!`)
-    general.send(embed).then(msg => msg.react('🇫'))
-})
 
-// The bot listens for messages here and deals with them acordingly 
+client.on("guildMemberAdd", member => {
+    const ama_links = ["https://am22.mediaite.com/tms/cnt/uploads/2015/03/amethyst.png", "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/8/8a/Amethyst_new.png/revision/latest?cb=20151117212235", "https://pm1.narvii.com/6052/ce2c29bfdc99cc3e0cb05b26af2d01f289889e56_hq.jpg", "https://media1.tenor.com/images/68c2c67832f8fbc7e033cc7658a78cf7/tenor.gif?itemid=4801663", "https://www.overlyanimated.com/wp-content/uploads/2016/08/Too_Short_to_Ride_075.png", "https://media0.giphy.com/media/dxOAJ4dPF0keAcUqiq/giphy.gif"]
+    var Amethyst_Role = member.guild.roles.find(role => role.name == 'Amethyst');
+    var Rules_Channel = member.guild.channels.find(Channel => Channel.name == '◯-rules-◯');
+    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '◯-bot-logs-◯');
+    var All_Member_Count_Channel = member.guild.channels.get('679351098842153002');
+    var Member_Count = member.guild.channels.get('679351188919025686');
+    var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
+    member.addRole(Amethyst_Role);
+    const Join_Embed = new RichEmbed()
+        .setTitle(`${member.user.username} has just joined the server!`)
+        .setColor("0xC49FD9")
+        .setImage(`${ama_p_link}`)
+        .setDescription(`${member.user.username} has just joined the server \n${member.user.toString()} don't forget to check ${Rules_Channel.toString()}`)
+        .setTimestamp()
+        .setFooter(`There's now ${member.guild.memberCount} people here!`);
+    Bot_Logs_Channel.send(Join_Embed).then(msg => msg.react('😳'));
+    const Memeber_Send = new RichEmbed()
+        .setTitle(`${member.user.username} welcome to the ${member.guild.name} server!`)
+        .setColor("0xC49FD9")
+        .setImage(`${ama_p_link}`)
+        .setDescription(`Hi, ${member.user.username} welcome to the ${member.guild.name} server! \nDon't forget to check the ${Rules_Channel.toString()} channel! \nOh yeah and have fun!`)
+        .setTimestamp()
+        .setFooter(`Welcome!`);
+    member.send(Memeber_Send).then(msg => msg.react('😳'));
+    if (member.guild.memberCount == 69) {
+        const author_69_member = new RichEmbed()
+            .setTitle(`Woah ${member.user.username} you're our 69th member!`)
+            .setImage(`${ama_p_link}`)
+            .setDescription(`Hey ${member.user.username} you're our 69th member that's pretty cool😳`)
+            .setColor(`0xC49FD9`)
+            .setTimestamp()
+            .setFooter(`Nice`);
+        member.user.send(author_69_member);
+    }
+    All_Member_Count_Channel.setName(`All Members : ${member.guild.memberCount}`);
+    Member_Count.setName(`Members : ${Math.floor(member.guild.memberCount - 8)}`);
+
+});
+client.on("guildMemberRemove", member => {
+    const ama_links = ["https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa4ccfeb-8e9d-413b-8e0b-d389983cae07/d8ysq0i-89dd9118-cec1-4769-a1ce-0eb9ffca1705.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhNGNjZmViLThlOWQtNDEzYi04ZTBiLWQzODk5ODNjYWUwN1wvZDh5c3EwaS04OWRkOTExOC1jZWMxLTQ3NjktYTFjZS0wZWI5ZmZjYTE3MDUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9lDqX6VUxGZ5E61_Q6Ik33aBqJp_17dFyZ8r0ShDgsg", "https://thegeekiary.com/wp-content/uploads/2016/08/steven-vs-amethyst-angry-at-herself.png", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dc2ab4e9-ba7a-4abc-98da-a941649c19fe/d913i5c-fc9a0c0c-68cc-4db8-9c2c-9466ccd06711.jpg/v1/fill/w_1024,h_1024,q_75,strp/sad_amethyst_by_chlorofilla_d913i5c-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2RjMmFiNGU5LWJhN2EtNGFiYy05OGRhLWE5NDE2NDljMTlmZVwvZDkxM2k1Yy1mYzlhMGMwYy02OGNjLTRkYjgtOWMyYy05NDY2Y2NkMDY3MTEuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.lj0bg05Cn6zdHxFYA0NH2SPlKspB9p8zjlakpzpTSQ8"]
+    var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
+    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '◯-bot-logs-◯');
+    const embed = new RichEmbed()
+        .setTitle(`${member.user.username} just left 😔`)
+        .setDescription(`${member.user.username} just left the server 😔`)
+        .setColor("0xC49FD9")
+        .setImage(`${ama_p_link}`)
+        .setTimestamp()
+        .setFooter(`Why?`);
+    Bot_Logs_Channel.send(embed).then(msg => msg.react('😔'));
+});
+// The message listner is so it can respond to messages 
 client.on("message", async message => {
-    // Sleep command
+    // Sleep command 
     const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
+    };
     // Checks if the author is a bot if so it stops
     if (message.author.bot) return;
     // Checks if the message is coming from outside a server (guild = server)
     if (!message.guild) return;
     // Caches a users member-status (best way i can say it (just who they are in the server)) if it cant find it alredy in the cache
     if (!message.member) member.member = await message.guild.fetchMember(message);
-    // switch stateent
-    let args = message.content.substring(prefex.length).split(" ");
-
-    // info commands
-    // info Server (guild)
-    if (message.content === `${prefex}info server`) {
-        var srvname = message.guild.name
-        var membercount = message.guild.memberCount
-        var TheGods = message.guild.roles.find(r => r.name == "The Gods")
-        var MiniGods = message.guild.roles.find(r => r.name == "Mini-gods")
-        var tinyGods = message.guild.roles.find(r => r.name == "teeny god")
-        const embed = new RichEmbed()
-            .setAuthor(`💜 ${srvname} Server Info 💜`)
-            .setColor("0xC49FD9")
-            .setTimestamp()
-            .setDescription(`Welcome to the ${srvname} server! \nThis server was made to replace the old Famethyst server!`)
-            .addField(`How many people are here?`, `There are currently ${Math.floor(membercount - 8)} people here!`)
-            .addField(`How do i talk to a mod?`, `You can get a mod's attention by mentioning either the \n${TheGods.toString()}, ${MiniGods.toString()} or ${tinyGods.toString()}`)
-            .setFooter(`Running Version ${vsNum} | Running Build ${BudNum}`)
-        message.channel.send(embed)
-    }
-
-    // info commands
-    if (message.content === `${prefex}info`) {
-        const embed = new RichEmbed()
-            .setAuthor(`Command info`)
-            .setColor("0XC49FD9")
-            .setTimestamp()
-            .addField(`${message.author.username} you can find the commands on github`, `Check the github page [here](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot)`)
-        message.channel.send(embed)
-    }
-
-    //info mc 
-    if (message.content === `${prefex}info mc`) {
-        const embed = new RichEmbed()
-            .setAuthor(`⛏️ Minecraft Server Info ⛏️`)
-            .setColor("DARK_GREEN")
-            .setTimestamp()
-            .setDescription(`⛏️ Minecraft Server Info ⛏️`)
-            .addField("What's the IP?", "The IP is: mc.famethyst.ml")
-            .addField("Check the stats page out at", "[lobby.famethyst.ml](https://lobby.famethyst.ml)")
-        message.channel.send(embed)
-    }
-
-    // info Debug_Info
-    if (message.content === `${prefex}!debug_info`) {
-        message.delete()
-        const embed = new RichEmbed()
-            .setTitle("Debug Info")
-            .setColor("0xC49FD9")
-            .setDescription(`COMPILED: 17/2/20; 20:13PM UTC | DEVICE: MAC BOOKAIR 13" (GITHUB_WEB) (IDV:5501) | BUILD: ${BudNum}`)
-            .addField("CHANGE LOG", "[CHANGELOG.MD](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/changelog.md)")
-            .setTimestamp()
-        message.author.send(embed)
-        message.reply("I've sent you the info!").then(msg => msg.delete(5000))
-    }
-
-
-    //Going feral commands
-    if (message.content === 'Im going feral') {
-        message.channel.send("Wait you're going feral? \nSo am I...")
-        sleep(2 * 1000).then(() => {
-            client.user.setPresence({
-                game: {
-                    name: `Ahhhhhhhh, I'm going fucking feral`
-                }
+    // Used to pull the args from the switch statement
+    let args = message.content.substring(Prefix.length).split(" ");
+    // Amathyst Array 
+    const ama_links = ["https://am22.mediaite.com/tms/cnt/uploads/2015/03/amethyst.png", "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/8/8a/Amethyst_new.png/revision/latest?cb=20151117212235", "https://pm1.narvii.com/6052/ce2c29bfdc99cc3e0cb05b26af2d01f289889e56_hq.jpg", "https://media1.tenor.com/images/68c2c67832f8fbc7e033cc7658a78cf7/tenor.gif?itemid=4801663", "https://www.overlyanimated.com/wp-content/uploads/2016/08/Too_Short_to_Ride_075.png", "https://media0.giphy.com/media/dxOAJ4dPF0keAcUqiq/giphy.gif"]
+    // Amaehyst Image Embed
+    var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
+    switch (args[0].toLowerCase()) {
+        // Message Latency info
+        case `-ping`:
+            // deletes the first message 
+            message.delete()
+            // sets a variable on the first message
+            message.channel.send('🏓 Pinging...').then(msg => {
+                sleep(5 * 1000).then(() => {
+                    // finds message latency and api latency
+                    var Message_Latency = (`${Math.floor(msg.createdAt - message.createdAt)}ms`);
+                    var APILatency = (`${Math.floor(client.ping)}ms`);
+                    // Checks the api speed 
+                    if (client.ping <= '250') {
+                        var Api_Time = ("✅ The ping looks okay right now!");
+                    } else if (client.ping <= '450') {
+                        var Api_Time = (`⚠️ The ping might be having trouble right now! \nThe ping time is ${client.ping}ms \nCheck the discord status page [here](https://status.discordapp.com)`);
+                    } else if (client.ping <= '750') {
+                        var Api_Time = (`❗️ The ping response time is very high something might be going very wrong! \nThe ping time is ${client.ping}ms \nCheck the status page [here](https://status.discordapp.com)`);
+                    } else {
+                        var Api_Time = (`❌ The ping is having a problem \nThe ping time is ${client.ping}ms, \nCheck whats going wrong [here](https://status.discordapp.com)`);
+                    }
+                    // msg.edit(Api_Time);
+                    const Api_embed = new RichEmbed()
+                        .setTitle('🏓 Ping...')
+                        .setColor("0xC49FD9")
+                        .setDescription('You\'ll get the most up to date infomation from the [Discord Status Page](https://status.discordapp.com)')
+                        .addField('How does the ping look?', Api_Time)
+                        .addField(`What's the HTTP API time?`, `${client.ping}ms`)
+                        .setTimestamp()
+                        .setFooter('Ping times!');
+                    msg.delete();
+                    message.channel.send(Api_embed);
+                });
             });
-            message.channel.send(`Oh my god ${message.author.username} I'm going fucking feral \nAhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh`)
-            sleep(3 * 1000).then(() => {
-                const image = new Attachment("https://66.media.tumblr.com/30ce04007d8c6874e6d5b7f386b0cc05/tumblr_inline_p7gjcd2V3B1qlu4t3_500.jpg")
-                message.channel.send(image).then(message.channel.send("Ahhhhhhhhhhhhhhhh, all I fucking want is sleep and that's fucking it!")).then(message.channel.send('Ahhhhhhhhhhhhhhhh'))
-                sleep(10 * 1000).then(() => {
-                    message.channel.send("What you thought I was finished? \nOh I've only just started but I'll go scream in the corner...")
-                    sleep(10 * 1000).then(() => {
-                        client.user.setPresence({
-                            game: {
-                                name: `Hey a | -info | ${vsNum}`
-                            }
-                        });
-                    })
-                })
-            })
-        })
-    }
+            break;
+        case '-info':
+            message.delete()
+            const rules_channel = message.guild.channels.find(channel => channel.name == `◯-rules-◯`);
+            var TheGods = message.guild.roles.find(roles => roles.name == "The Gods")
+            var MiniGods = message.guild.roles.find(roles => roles.name == "Mini-gods")
+            var tinyGods = message.guild.roles.find(roles => roles.name == "teeny god")
+            const info_embed = new RichEmbed()
+                .setTitle(`Server Info!`)
+                .setColor(`0xC49FD9`)
+                .setThumbnail(`${message.author.avatarURL}`)
+                .setDescription(`${message.author.username} here is the server info!`)
+                .addField(`How many people are here?`, `There ${Math.floor(message.guild.memberCount) - 8} people here! \n\(Not including Bots!\)`)
+                .addField(`Where can i find the rules?`, `You can find the rules for the server in the ${rules_channel.toString()} channel!`)
+                .addField(`Who are the mods?`, `Mods have the roles ${TheGods.toString()}, ${MiniGods.toString()} and ${tinyGods.toString()}!`)
+                .addField(`What's the ip for the Minecraft server?`, `You can join the server at mc.famethyst.ml \nYou can check out the status page [here](https://lobby.famethyst.ml)`)
+                .addField(`What other commands are there?`, `You can find the other commands on my github page [here](https://www.github.com/Joshua-Noakes1/Famethyst-Discord-Bot/)!`)
+                .setTimestamp()
+                .setFooter(`How you doing ${message.author.username}`);
+            message.reply(info_embed);
+            break;
+        case '-!debug_info':
+            message.delete()
+            const debug_embed = new RichEmbed()
+                .setTitle(`Debug Info`)
+                .setColor(`0xC49FD9`)
+                .setDescription(`Compiled: 16:30pm UTC 20/02/2020 | Device: Windows 10 Joshua-PC\\joshua (Visual Studio Code) (${Build_Number}) \nThe bot connected with Username and Tag ${client.user.tag}`)
+                .addField(`Change Log`, `[Change Log on Github](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/changelog.md)`)
+                .setTimestamp();
+            message.author.send(debug_embed)
+            message.channel.send(`${message.author.username} I've just sent you the info!`).then(msg => msg.delete(5000));
+            break;
+        case 'linux':
+            const linux_embed = new RichEmbed()
+                .setTitle(`Hey, ${message.author.username} Arch is better!`)
+                .setColor(`0xC49FD9`)
+                .setThumbnail(`https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Archlinux-icon-crystal-64.svg/1200px-Archlinux-icon-crystal-64.svg.png`)
+                .setDescription(`Hey, ${message.author.username} [arch](https://www.archlinux.org/) is better!`)
+                .setTimestamp()
+                .setFooter(`I run on Arch!`);
+            message.reply(linux_embed).then(msg => msg.react('😠'));
+            break;
 
-    // linux 
-    if (message.content === `linux`) {
-        message.reply('Arch is good... Right?')
-    }
 
-
-
-
-
-
-    // Hey amethyst
-    // Okay, this is shit, i can't work out how tf i can make this smaller but if it's possible please tell me! (email: joshua@joshuageorge.ml)
-
-    // (Channel Message = [ Hey ama message trigers])
-    if (message.content === "Hey, Amethyst?") {
-        // embed = new discord RichEmbed
-        const embed = new RichEmbed()
-            // Grabs the message authors icon and their username and replys with their usr name and icon in the message
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            // sets the color as to amaethysts deafult purple
-            .setColor("0xC49FD9")
-            // sets the image to amathysts
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            // adds the always changing time stamp
-            .setTimestamp()
-        // sends the embed into the channel that the message was sent in
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey, amethyst?") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey amethyst?") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "Hey, Amethyst!") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey, amethyst!") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "Hey Amethyst!") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "Hey, Amethyst") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "Hey Amethyst") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey, amethyst") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey amethyst") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey amethyst") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey, a") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "Hey a") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-
-    if (message.content === "hey a") {
-        const embed = new RichEmbed()
-            .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
-            .setColor("0xC49FD9")
-            .setImage("https://i.imgur.com/yIe6irt.jpg")
-            .setTimestamp()
-        message.channel.send(embed)
+            // Hey amathyst commands 
+        case "hey amethyst?":
+            const HA1 = new RichEmbed()
+                .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
+                .setColor("0xC49FD9")
+                .setImage(`${ama_p_link}`)
+                .setTimestamp();
+            message.channel.send(HA1)
+            break;
+        case "hey amethyst!":
+            const HA2 = new RichEmbed()
+                .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
+                .setColor("0xC49FD9")
+                .setImage(`${ama_p_link}`)
+                .setTimestamp();
+            message.channel.send(HA2)
+            break;
+        case "hey amethyst":
+            const HA3 = new RichEmbed()
+                .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
+                .setColor("0xC49FD9")
+                .setImage(`${ama_p_link}`)
+                .setTimestamp();
+            message.channel.send(HA3)
+            break;
+        case "hey a":
+            const HA4 = new RichEmbed()
+                .setAuthor(`Hey, ${message.author.username} \nHow you doing?`, message.author.avatarURL)
+                .setColor("0xC49FD9")
+                .setImage(`${ama_p_link}`)
+                .setTimestamp();
+            message.channel.send(HA4)
+            break;
     }
 });
-client.login(process.env.Bot_Token);
+
+client.login(process.env.Bot_Token_Beta);
