@@ -10,26 +10,16 @@
 #### The info commands
 ```Code
 -info
--info server
--info mc
 -!debug_info
 ```
 
 #### The Hey Amethyst Commands
+(The commands are now case insensitive!)
 ```Code
-Hey, Amethyst?  
-hey, amethyst?  
-hey amethyst?  
-Hey, Amethyst!  
-hey, amethyst!  
-Hey Amethyst! 
-Hey, Amethyst  
-Hey Amethyst  
-hey, amethyst  
-hey amethyst  
-hey, a 
-Hey a
-hey a   
+hey amethyst?
+hey amethyst!
+hey amethyst
+hey a
 ```  
 ## Licence
 This project is under the MIT Licence   
