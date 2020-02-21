@@ -18,8 +18,8 @@ const client = new Client({
 // All the major vars thats aren't to do with proper code like the version number and build number
 // So it can see messages without with prefix (-)
 const Prefix = ('');
-const Version_Number = ('Version 5.5');
-const Build_Number = ('Build Number: 5.3:5507');
+const Version_Number = ('Version 5.6');
+const Build_Number = ('Build Number: 5.4:5607');
 // The 'Ready' listner is key to letting discord know that the bot is ready to run
 client.on("ready", () => {
     console.log(`The bot has connected with the username and tag ${client.user.tag} \nThe bot is also running ${Version_Number} and ${Build_Number}`);
@@ -143,7 +143,7 @@ client.on("message", async message => {
             const rules_channel = message.guild.channels.find(channel => channel.name == `◯-rules-◯`);
             var TheGods = message.guild.roles.find(roles => roles.name == "The Gods")
             var MiniGods = message.guild.roles.find(roles => roles.name == "Mini-gods")
-            var tinyGods = message.guild.roles.find(roles => roles.name == "teeny god")
+            var tinyGods = message.guild.roles.find(roles => roles.name == "Teeny god")
             const info_embed = new RichEmbed()
                 .setTitle(`Server Info!`)
                 .setColor(`0xC49FD9`)
@@ -163,7 +163,7 @@ client.on("message", async message => {
             const debug_embed = new RichEmbed()
                 .setTitle(`Debug Info`)
                 .setColor(`0xC49FD9`)
-                .setDescription(`Compiled: 00:02 UTC 21/02/2020 | Device: Windows 10 Joshua-PC\\joshua (Visual Studio Code) (${Build_Number}) \nThe bot connected with Username and Tag ${client.user.tag}`)
+                .setDescription(`Compiled: 00:02 UTC 21/02/2020 | Device: Windows 10 Joshua-PC\\joshua (Github Web) (${Build_Number}) \nThe bot connected with Username and Tag ${client.user.tag}`)
                 .addField(`Change Log`, `[Change Log on Github](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/changelog.md)`)
                 .setTimestamp();
             message.author.send(debug_embed)
