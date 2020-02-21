@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The bot is now case insensitive so running linux does the same thing as LINux or LInuX... I think you get the idea
 - I've cut down on the ammount of info commands and now there's only one -info 
 # Added
+- The bot now grabs a random image for the Hey a series of commands, welcome and leave messages!
 - ping command for checking the api times 
 - An embed for the linux command
 # Removed
