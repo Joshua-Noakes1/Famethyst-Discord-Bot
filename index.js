@@ -18,8 +18,8 @@ const client = new Client({
 // All the major vars thats aren't to do with proper code like the version number and build number
 // So it can see messages without with prefix (-)
 const Prefix = ('');
-const Version_Number = ('Version 5.6');
-const Build_Number = ('Build Number: 5.4:5607');
+const Version_Number = ('Version 5.8');
+const Build_Number = ('Build Number: 5.5:5808');
 // The 'Ready' listner is key to letting discord know that the bot is ready to run
 client.on("ready", () => {
     console.log(`The bot has connected with the username and tag ${client.user.tag} \nThe bot is also running ${Version_Number} and ${Build_Number}`);
@@ -163,7 +163,7 @@ client.on("message", async message => {
             const debug_embed = new RichEmbed()
                 .setTitle(`Debug Info`)
                 .setColor(`0xC49FD9`)
-                .setDescription(`Compiled: 00:02 UTC 21/02/2020 | Device: Windows 10 Joshua-PC\\joshua (Github Web) (${Build_Number}) \nThe bot connected with Username and Tag ${client.user.tag}`)
+                .setDescription(`Compiled: 23:54 UTC 29/02/2020 | Device: Windows 10 Joshua-PC-2\\\\joshua (VSC) (${Build_Number}) \nThe bot connected with Username and Tag ${client.user.tag}`)
                 .addField(`Change Log`, `[Change Log on Github](https://github.com/Joshua-Noakes1/Famethyst-Discord-Bot/blob/master/changelog.md)`)
                 .setTimestamp();
             message.author.send(debug_embed)
@@ -246,4 +246,4 @@ client.on("message", async message => {
     }
 });
 
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token);
