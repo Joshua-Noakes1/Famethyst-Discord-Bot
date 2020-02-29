@@ -25,7 +25,7 @@ client.on("ready", () => {
     console.log(`The bot has connected with the username and tag ${client.user.tag} \nThe bot is also running ${Version_Number} and ${Build_Number}`);
     client.user.setPresence({
         game: {
-            name: `Hey a | -info | ${Version_Number}`
+            name: `Hey a | ;!info | ${Version_Number}`
         }
     });
 });
@@ -33,8 +33,8 @@ client.on("ready", () => {
 client.on("guildMemberAdd", member => {
     const ama_links = ["https://am22.mediaite.com/tms/cnt/uploads/2015/03/amethyst.png", "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/8/8a/Amethyst_new.png/revision/latest?cb=20151117212235", "https://pm1.narvii.com/6052/ce2c29bfdc99cc3e0cb05b26af2d01f289889e56_hq.jpg", "https://media1.tenor.com/images/68c2c67832f8fbc7e033cc7658a78cf7/tenor.gif?itemid=4801663", "https://www.overlyanimated.com/wp-content/uploads/2016/08/Too_Short_to_Ride_075.png", "https://media0.giphy.com/media/dxOAJ4dPF0keAcUqiq/giphy.gif"]
     var Amethyst_Role = member.guild.roles.find(role => role.name == 'Amethyst');
-    var Rules_Channel = member.guild.channels.find(Channel => Channel.name == '◯-rules-◯');
-    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '◯-bot-logs-◯');
+    var Rules_Channel = member.guild.channels.find(Channel => Channel.name == '°°-rules-°°');
+    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '°°-bot-logs-°°');
     var All_Member_Count_Channel = member.guild.channels.get('679346474995417109');
     var Member_Count = member.guild.channels.get('679346750489886720');
     var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
@@ -55,7 +55,7 @@ client.on("guildMemberAdd", member => {
         .setTimestamp()
         .setFooter(`Welcome!`);
     member.send(Memeber_Send).then(msg => msg.react('😳'));
-    if (member.guild.memberCount == 69) {
+    if (member.guild.memberCount - 8 == 69) {
         const author_69_member = new RichEmbed()
             .setTitle(`Woah ${member.user.username} you're our 69th member!`)
             .setImage(`${ama_p_link}`)
@@ -71,7 +71,7 @@ client.on("guildMemberAdd", member => {
 client.on("guildMemberRemove", member => {
     const ama_links = ["https://i.ytimg.com/vi/bz3RrVWjg6s/maxresdefault.jpg", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa4ccfeb-8e9d-413b-8e0b-d389983cae07/d8ysq0i-89dd9118-cec1-4769-a1ce-0eb9ffca1705.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhNGNjZmViLThlOWQtNDEzYi04ZTBiLWQzODk5ODNjYWUwN1wvZDh5c3EwaS04OWRkOTExOC1jZWMxLTQ3NjktYTFjZS0wZWI5ZmZjYTE3MDUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9lDqX6VUxGZ5E61_Q6Ik33aBqJp_17dFyZ8r0ShDgsg", "https://thegeekiary.com/wp-content/uploads/2016/08/steven-vs-amethyst-angry-at-herself.png", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dc2ab4e9-ba7a-4abc-98da-a941649c19fe/d913i5c-fc9a0c0c-68cc-4db8-9c2c-9466ccd06711.jpg/v1/fill/w_1024,h_1024,q_75,strp/sad_amethyst_by_chlorofilla_d913i5c-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2RjMmFiNGU5LWJhN2EtNGFiYy05OGRhLWE5NDE2NDljMTlmZVwvZDkxM2k1Yy1mYzlhMGMwYy02OGNjLTRkYjgtOWMyYy05NDY2Y2NkMDY3MTEuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.lj0bg05Cn6zdHxFYA0NH2SPlKspB9p8zjlakpzpTSQ8"]
     var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
-    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '◯-bot-logs-◯');
+    var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '°°-bot-logs-°°');
     var All_Member_Count_Channel = member.guild.channels.get('679346474995417109');
     var Member_Count = member.guild.channels.get('679346750489886720');
     const embed = new RichEmbed()
@@ -105,7 +105,7 @@ client.on("message", async message => {
     var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
     switch (args[0].toLowerCase()) {
         // Message Latency info
-        case `-ping`:
+        case `;!ping`:
             // deletes the first message 
             message.delete()
             // sets a variable on the first message
@@ -138,9 +138,9 @@ client.on("message", async message => {
                 });
             });
             break;
-        case '-info':
+        case ';!info':
             message.delete()
-            const rules_channel = message.guild.channels.find(channel => channel.name == `◯-rules-◯`);
+            const rules_channel = message.guild.channels.find(channel => channel.name == `°°-rules-°°`);
             var TheGods = message.guild.roles.find(roles => roles.name == "The Gods")
             var MiniGods = message.guild.roles.find(roles => roles.name == "Mini-gods")
             var tinyGods = message.guild.roles.find(roles => roles.name == "Teeny god")
@@ -152,13 +152,13 @@ client.on("message", async message => {
                 .addField(`How many people are here?`, `There ${Math.floor(message.guild.memberCount) - 8} people here! \n\(Not including Bots!\)`)
                 .addField(`Where can i find the rules?`, `You can find the rules for the server in the ${rules_channel.toString()} channel!`)
                 .addField(`Who are the mods?`, `Mods have the roles ${TheGods.toString()}, ${MiniGods.toString()} and ${tinyGods.toString()}!`)
-                .addField(`What's the ip for the Minecraft server?`, `You can join the server at mc.famethyst.ml \nYou can check out the status page [here](https://lobby.famethyst.ml)`)
+
                 .addField(`What other commands are there?`, `You can find the other commands on my github page [here](https://www.github.com/Joshua-Noakes1/Famethyst-Discord-Bot/)!`)
                 .setTimestamp()
                 .setFooter(`How you doing ${message.author.username}`);
             message.reply(info_embed);
             break;
-        case '-debug_info':
+        case ';!debug_info':
             message.delete()
             const debug_embed = new RichEmbed()
                 .setTitle(`Debug Info`)
@@ -178,6 +178,36 @@ client.on("message", async message => {
                 .setTimestamp()
                 .setFooter(`I run on Arch!`);
             message.reply(linux_embed).then(msg => msg.react('😠'));
+            break;
+        case ';!debug_update':
+            message.channel.send('Updating Server...').then(msg1 => {
+                sleep(5 * 1000).then(() => {
+                    var All_Member_Count_Channel = message.guild.channels.get('679346474995417109');
+                    var Member_Count = message.guild.channels.get('679346750489886720');
+                    All_Member_Count_Channel.setName(`All Members : ${message.guild.memberCount}`);
+                    Member_Count.setName(`Members : ${Math.floor(message.guild.memberCount - 8)}`);
+                    msg1.delete();
+                    const du_embed = new RichEmbed()
+                        .setTitle('Current Bot and Server Stats')
+                        .setColor("0xC49FD9")
+                        .setDescription('Update complete \nHere\'s the current server and bot stats')
+                        .addField('Current Member Count (without bots)', `${message.guild.memberCount}`)
+                        .addField(`Current Version`, `${Version_Number}`)
+                        .addField(`Current Build`, `${Build_Number}`)
+                        .setTimestamp();
+                    message.channel.send(du_embed);
+                });
+            });
+            break;
+        case 'coronavirus':
+            const corona_embed = new RichEmbed()
+            .setTitle('COVID-19')
+            .setColor("0xC49FD9")
+            .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2019-nCoV-CDC-23312_without_background.png/800px-2019-nCoV-CDC-23312_without_background.png")
+            .setDescription('Please click [here](https://www.who.int/emergencies/diseases/novel-coronavirus-2019) for the WHO\'s current status on [COVID-19](https://en.wikipedia.org/wiki/Coronavirus_disease_2019).\n\nThe coronavirus (medically know as [COVID-19](https://en.wikipedia.org/wiki/Coronavirus_disease_2019) previously know as [2019-nCoV](https://en.wikipedia.org/wiki/Coronavirus_disease_2019)) is an  infectious disease caused by [SARS-CoV-2](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2).\nThis means that It\'s closely related to [SARS](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome) or Severe acute respiratory syndrome.\n\n[COVID-19](https://en.wikipedia.org/wiki/Coronavirus_disease_2019) can cause a fever, cough and shortness of breath,\nThough cases can progress into pneumonia and multi-organ failure \nyou shouldn\'t worry about [COVID-19](https://en.wikipedia.org/wiki/Coronavirus_disease_2019) as It\'s just a bad case of the flu,\nThe current fatality percentage is at between 1% & 3%.\n\nIf you have flu like symptoms please go to your local medial center\nyou can find your local medial center [here](https://www.google.com/search?q=medical+center+near+me)')
+            .setTimestamp()
+            .setFooter('Information correct at 23:22 29/02/20 GMT')
+            message.channel.send(corona_embed);
             break;
     }
 
@@ -216,4 +246,4 @@ client.on("message", async message => {
     }
 });
 
-client.login(process.env.Bot_Token);
+client.login(process.env.Bot_Token_Beta);
