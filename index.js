@@ -18,8 +18,8 @@ const client = new Client({
 // All the major vars thats aren't to do with proper code like the version number and build number
 // So it can see messages without with prefix (-)
 const Prefix = ('');
-const Version_Number = ('Version 5.8');
-const Build_Number = ('Build Number: 5.5:5808');
+const Version_Number = ('Version 5.9');
+const Build_Number = ('Build Number: 5.6:5908');
 // The 'Ready' listner is key to letting discord know that the bot is ready to run
 client.on("ready", () => {
     console.log(`The bot has connected with the username and tag ${client.user.tag} \nThe bot is also running ${Version_Number} and ${Build_Number}`);
@@ -36,7 +36,7 @@ client.on("guildMemberAdd", member => {
     var Rules_Channel = member.guild.channels.find(Channel => Channel.name == '°°-rules-°°');
     var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '°°-bot-logs-°°');
     var All_Member_Count_Channel = member.guild.channels.get('679346474995417109');
-    var Member_Count = member.guild.channels.get('679346750489886720');
+    var Member_Count = member.guild.channels.get('679351188919025686');
     var ama_p_link = ama_links[Math.floor(Math.random() * ama_links.length)]
     member.addRole(Amethyst_Role);
     const Join_Embed = new RichEmbed()
@@ -74,16 +74,16 @@ client.on("guildMemberRemove", member => {
     var Bot_Logs_Channel = member.guild.channels.find(Channel => Channel.name == '°°-bot-logs-°°');
     var All_Member_Count_Channel = member.guild.channels.get('679346474995417109');
     var Member_Count = member.guild.channels.get('679346750489886720');
-    const embed = new RichEmbed()
+    const leave_embed = new RichEmbed()
         .setTitle(`${member.user.username} just left 😔`)
         .setDescription(`${member.user.username} just left the server 😔`)
         .setColor("0xC49FD9")
         .setImage(`${ama_p_link}`)
         .setTimestamp()
         .setFooter(`Why?`);
-    Bot_Logs_Channel.send(embed).then(msg => msg.react('😔'));
+    Bot_Logs_Channel.send(leave_embed).then(msg => msg.react('😔'));
     All_Member_Count_Channel.setName(`All Members : ${member.guild.memberCount}`);
-    Member_Count.setName(`Members : ${Math.floor(member.guild.memberCount - 8)}`);
+    Member_Count.setName(`Members : ${Math.floor(member.guild.memberCount - 9)}`);
 });
 // The message listner is so it can respond to messages 
 client.on("message", async message => {
