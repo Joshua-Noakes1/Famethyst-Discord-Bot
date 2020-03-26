@@ -7,6 +7,9 @@
 ![Twitter Follow](https://img.shields.io/twitter/follow/lilswanson28?label=@lilswanson28&style=social)
 ## Commands  
 
+** I'll update this when i get a chance **
+
+
 #### The info commands
 ```Code
 -info
