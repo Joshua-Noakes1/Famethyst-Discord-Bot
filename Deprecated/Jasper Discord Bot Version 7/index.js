@@ -15,7 +15,7 @@ client.on('ready', () => {
     console.log(`The bot has connected with the username ${client.user.username}`);
     client.user.setPresence({
         game: {
-            name: `Hey j | ;!info`
+            name: `Lake | -info`
         }
     });
 });
@@ -49,4 +49,4 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.Bot_Token)
+client.login(process.env.Bot_Token_Beta)

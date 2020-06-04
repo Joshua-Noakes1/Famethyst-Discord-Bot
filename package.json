@@ -1,15 +1,19 @@
 {
-  "name": "amth-dc-bot",
+  "name": "lake-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "joshua noakes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joshua-Noakes1/Lake-Bot.git"
+  },
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "discord.js": "^11.6.3",
-    "dotenv": "^8.2.0"
-  }
+  "bugs": {
+    "url": "https://github.com/Joshua-Noakes1/Lake-Bot/issues"
+  },
+  "homepage": "https://github.com/Joshua-Noakes1/Lake-Bot#readme"
 }
