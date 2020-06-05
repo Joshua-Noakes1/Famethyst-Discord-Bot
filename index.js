@@ -2,27 +2,24 @@
 
 // Lake Config - The config for the bot to connect to discord and grab modules.
 require('dotenv').config();
-
+//error loging file and date stuff
 fs = require('fs');
 var date_master = new Date();
 var date = date_master.toISOString().slice(0, 10);
 var time = date_master.getHours() + "-" + date_master.getMinutes();
 var file_time = date_master.getHours() + ":" + date_master.getMinutes();
 var second = date_master.getSeconds();
+//discord magic
 const Discord = require("discord.js");
-
 const client = new Discord.Client();
-
 client.commands = new Discord.Collection();
 const clientcommands = require('./commands');
-
 const prefix = '~';
-
 Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
 
-
+//the magic connection to discord
 client.on('ready', () => {
     console.log(`Online as ${client.user.tag}`);
     client.user.setActivity("at the lake | ~help", {
@@ -30,7 +27,7 @@ client.on('ready', () => {
     });
 })
 
-
+//messages
 client.on('message', message => {
     const args = message.content.substring(0);
     const command = args.toLowerCase();
@@ -42,6 +39,8 @@ client.on('message', message => {
     } catch (error) {
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
+
+        //when things go wrong.
         //Logging error in errors.txt
         fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `The command ${command} was just run by ${message.member.displayName} (${message.author.tag}) on ${date} at ${file_time}:${second} BST in the server ${message.guild.name} but it gave an error!\n\n${error}`, function (err) {
             if (err) return console.log(err);
@@ -56,7 +55,9 @@ client.on('message', message => {
             .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
             .setDescription(`Hey, ${message.member.displayName} something's gone wrong that ${titlequotes_random} \n\nThe problem's been logged on our side and the code monkeys are hard working on a fix!`)
             .setTimestamp();
-        message.channel.send(main_message_error).then(msg => {msg.react(`😳`)});
+        message.channel.send(main_message_error).then(msg => {
+            msg.react(`😳`)
+        });
         return;
     }
 });
