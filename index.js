@@ -1,15 +1,16 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
-
 // Lake Config - The config for the bot to connect to discord and grab modules.
+//Its like 2 am i think as i write this so just ignore my 2am comments 
+
 require('dotenv').config();
-//error loging file and date stuff
+//error loging file and data stuff
 fs = require('fs');
 var date_master = new Date();
 var date = date_master.toISOString().slice(0, 10);
 var time = date_master.getHours() + "-" + date_master.getMinutes();
 var file_time = date_master.getHours() + ":" + date_master.getMinutes();
 var second = date_master.getSeconds();
-//discord magic
+//shitty discord magic
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -19,7 +20,7 @@ Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
 
-//the magic connection to discord
+//the magic connection to discord potato servers
 client.on('ready', () => {
     console.log(`Online as ${client.user.tag}`);
     client.user.setActivity("at the lake | ~help", {
@@ -27,7 +28,7 @@ client.on('ready', () => {
     });
 })
 
-//messages
+//messages what else
 client.on('message', message => {
     const args = message.content.substring(0);
     const command = args.toLowerCase();
@@ -44,7 +45,7 @@ client.on('message', message => {
         //Logging error in errors.txt
         fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `The command ${command} was just run by ${message.member.displayName} (${message.author.tag}) on ${date} at ${file_time}:${second} BST in the server ${message.guild.name} but it gave an error!\n\n${error}`, function (err) {
             if (err) return console.log(err);
-            console.log(`Logged the error that occured on ${date} @ ${file_time}:${second} with ${command}`);
+            console.log(`Logged the error with ${command} that occured on ${date} @ ${file_time}:${second} with ${command}`);
         });
         //Error message if a command goes wrong so we dont crash 
         const titlequotes = ['our time traveling trees never predicted!', 'our observant grasshoppers missed!'];
