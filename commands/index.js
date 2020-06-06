@@ -1,6 +1,6 @@
 module.exports = {
-    //Support Commands
-      test: require('./support/test'),
-      crash: require('./support/crash'),
-      ping: require('./support/ping')
+    //Bot-Support Commands
+      test: require('./bot-support/test'),
+      crash: require('./bot-support/crash'),
+      ping: require('./bot-support/ping')
     };

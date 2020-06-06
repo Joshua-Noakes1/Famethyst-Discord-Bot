@@ -1,6 +1,6 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-console.log('Lake Discord Bot Beta Build 0.2\n--------------------\nInitialising the bot\'s login configuration...');
+console.log('Lake Discord Bot Beta Build 0.3\n--------------------\nInitialising the bot\'s login configuration...');
 
 //whats .env
 require('dotenv').config();
@@ -57,10 +57,10 @@ client.on('message', message => {
         const titlequotes = ['our time traveling trees never predicted!', 'our observant grasshoppers missed!'];
         var titlequotes_random = titlequotes[Math.floor(Math.random() * titlequotes.length)];
         const main_message_error = new Discord.MessageEmbed()
-            .setTitle(`An error has occured with ${command}`)
+            .setTitle(`An error has occured with "${command}"`)
             .setColor('0xFF0000')
             .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
-            .setDescription(`Hey, ${message.member.displayName} something's gone wrong that ${titlequotes_random} \n\nThe problem's been logged on our side and the code monkeys are hard working on a fix!`)
+            .setDescription(`Hey, ${message.member.displayName} something's gone wrong that ${titlequotes_random}\n\nThe problem's been logged on our side and the code monkeys are hard working on a fix!`)
             .setTimestamp();
         message.channel.send(main_message_error).then(msg => {
             msg.react(`😳`)
