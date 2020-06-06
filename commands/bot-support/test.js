@@ -1,5 +1,5 @@
 module.exports = {
-  name: '~test',
+  name: 'test',
   description: 'Testing if the bot works',
   execute(message, args, Client, Discord) {
     const test_embed = new Discord.MessageEmbed()

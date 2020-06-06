@@ -1,5 +1,5 @@
 module.exports = {
-    name: '~ping',
+    name: 'ping',
     description: 'Checking the servers ping',
     execute(message, args, client, Discord) {
         // Message Latency info
@@ -23,7 +23,7 @@ module.exports = {
                 const Api_embed = new Discord.MessageEmbed()
                     .setTitle('🏓 Ping...')
                     .setColor(`${Api_Color}`)
-                    .setDescription('You\'ll get the most up to date infomation from the [client status page](https://status.clientapp.com).')
+                    .setDescription('You\'ll get the most up to date infomation from the [discord status page](https://status.discord.com).')
                     .addField('How does the ping look?', Api_Time)
                     .setTimestamp()
                     .setFooter('Ping times!');

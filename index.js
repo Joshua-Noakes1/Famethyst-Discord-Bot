@@ -1,6 +1,8 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-console.log('Lake Discord Bot Beta Build 0.3\n--------------------\nInitialising the bot\'s login configuration...');
+const build_v = 0.3
+const command_count = 5
+console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
 //whats .env
 require('dotenv').config();
@@ -23,7 +25,7 @@ const prefix = '~';
 Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
-console.log('Finalising the bot\'s login configuration.\n--------------------')
+console.log(`Current loaded commands ${command_count}\nFinalising the bot\'s login configuration.\n--------------------`)
 //the magic connection to discord potato servers
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -34,22 +36,24 @@ client.on('ready', () => {
 
 //messages what else
 client.on('message', message => {
-    const args = message.content.substring(0);
-    const command = args.toLowerCase();
+    if (!message.content.startsWith(prefix)) return;
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return;
 
     try {
-        client.commands.get(command).execute(message, args, client, Discord);
+        client.commands.get(command).execute(message, args, client, Discord, build_v, command_count);
     } catch (error) {
-        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-        const command = args.shift().toLowerCase();
+        //there was duplicate code here from 37 - 38 dont know why.
+
 
         //when things go wrong.
         //Logging error in errors.txt
         //lets hope that we dont get a bunch of cascading errors
-        //if we do well we're going to have a lot more wrong then some log files breaking.
-        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `The command ${command}.js was just run by ${message.member.displayName} (${message.author.tag}) on ${date} at ${file_time}:${second} UTC+1 in the server ${message.guild.name} but it gave an error!\n\n${error}`, function (err) {
+        //if we do well we're going to have a lot more wrong then some log files breaking
+        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `--------------------\n${client.user.tag} has had an error\nit occured at ${date} - ${file_time}\nThe affected command is ${command}.js\nThe bot is running build ${build_v} and had ${command_count} commands loaded\nthe error is: ${error}\n--------------------`, function (err) {
             if (err) return console.log(err);
             console.log(`Logged the error with ${command} that occured on ${date} @ ${file_time}:${second}`);
         });
@@ -62,9 +66,7 @@ client.on('message', message => {
             .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
             .setDescription(`Hey, ${message.member.displayName} something's gone wrong that ${titlequotes_random}\n\nThe problem's been logged on our side and the code monkeys are hard working on a fix!`)
             .setTimestamp();
-        message.channel.send(main_message_error).then(msg => {
-            msg.react(`😳`)
-        });
+        message.channel.send(main_message_error);
         return;
     }
 });
