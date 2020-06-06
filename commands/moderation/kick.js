@@ -3,6 +3,7 @@ module.exports = {
     description: 'kick command',
     execute(message, args, Client, Discord) {
         if (message.member.roles.cache.some(j => j.name === 'Joshua')) {
+            //kick command
             let reason = args.slice(1).join(" ");
 
             if (message.mentions.members.size === 0)
@@ -19,6 +20,7 @@ module.exports = {
                 console.log(err);
             });
         } else {
+            //people that dont have an admin role
             console.log('else')
             return;
         }
