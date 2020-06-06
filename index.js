@@ -1,8 +1,10 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-//Its like 2 am i think as i write this so just ignore my 2am comments 
+console.log('Lake Discord Bot Beta Build 0.2\n--------------------\nInitialising the bot\'s login configuration...');
 
+//whats .env
 require('dotenv').config();
+console.log('Loaded dotenv...')
 //error loging file and data stuff
 fs = require('fs');
 var date_master = new Date();
@@ -10,19 +12,21 @@ var date = date_master.toISOString().slice(0, 10);
 var time = date_master.getHours() + "-" + date_master.getMinutes();
 var file_time = date_master.getHours() + ":" + date_master.getMinutes();
 var second = date_master.getSeconds();
-//shitty discord magic
+console.log('Configured the file system, date and time...')
+//discord magic
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const clientcommands = require('./commands');
+console.log('Configured the discord API...')
 const prefix = '~';
 Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
-
+console.log('Finalising the bot\'s login configuration.\n--------------------')
 //the magic connection to discord potato servers
 client.on('ready', () => {
-    console.log(`Online as ${client.user.tag}`);
+    console.log(`Logged in as ${client.user.tag}`);
     client.user.setActivity("at the lake | ~help", {
         type: "PLAYING"
     });
@@ -43,9 +47,11 @@ client.on('message', message => {
 
         //when things go wrong.
         //Logging error in errors.txt
-        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `The command ${command} was just run by ${message.member.displayName} (${message.author.tag}) on ${date} at ${file_time}:${second} BST in the server ${message.guild.name} but it gave an error!\n\n${error}`, function (err) {
+        //lets hope that we dont get a bunch of cascading errors
+        //if we do well we're going to have a lot more wrong then some log files breaking.
+        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `The command ${command}.js was just run by ${message.member.displayName} (${message.author.tag}) on ${date} at ${file_time}:${second} UTC+1 in the server ${message.guild.name} but it gave an error!\n\n${error}`, function (err) {
             if (err) return console.log(err);
-            console.log(`Logged the error with ${command} that occured on ${date} @ ${file_time}:${second} with ${command}`);
+            console.log(`Logged the error with ${command} that occured on ${date} @ ${file_time}:${second}`);
         });
         //Error message if a command goes wrong so we dont crash 
         const titlequotes = ['our time traveling trees never predicted!', 'our observant grasshoppers missed!'];
