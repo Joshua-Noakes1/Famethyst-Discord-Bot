@@ -5,5 +5,7 @@ module.exports = {
       ping: require('./bot-support/ping'),
       debug: require('./bot-support/debug'),
     //Moderation Command
-      kick: require('./moderation/kick')
+      kick: require('./moderation/kick'),
+      ban: require('./moderation/ban'),
+      mute: require('./moderation/mute')
     };

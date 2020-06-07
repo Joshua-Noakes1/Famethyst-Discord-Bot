@@ -1,6 +1,6 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-const build_v = 0.3
+const build_v = 0.4
 const command_count = 5
 console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
@@ -53,7 +53,7 @@ client.on('message', message => {
         //Logging error in errors.txt
         //lets hope that we dont get a bunch of cascading errors
         //if we do well we're going to have a lot more wrong then some log files breaking
-        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `--------------------\n${client.user.tag} has had an error\nit occured at ${date} - ${file_time}\nThe affected command is ${command}.js\nThe bot is running build ${build_v} and had ${command_count} commands loaded\nthe error is: ${error}\n--------------------`, function (err) {
+        fs.writeFile(`./errors/error_with_${command}_on_${date}@${time}-${second}.err`, `--------------------\n${client.user.tag} has had an error\nit occured at ${date} - ${file_time}:${second}\nThe affected command is ${command}.js\nThe bot is running build ${build_v} and had ${command_count} commands loaded\nthe error is: ${error}\n--------------------`, function (err) {
             if (err) return console.log(err);
             console.log(`Logged the error with ${command} that occured on ${date} @ ${file_time}:${second}`);
         });

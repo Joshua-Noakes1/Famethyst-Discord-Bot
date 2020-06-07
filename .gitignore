@@ -1,4 +1,6 @@
 *.env
 *.err
+todo
+shard.js
 node_modules/
 errors/
