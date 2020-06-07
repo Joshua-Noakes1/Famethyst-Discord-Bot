@@ -8,7 +8,7 @@ module.exports = {
         var second = date_master.getSeconds();
         const debug_embed = new Discord.MessageEmbed()
             .setTitle(`Debug`)
-            .setColor(`0xd44b28`)
+            .setColor(`0x483D8B`)
             .setThumbnail(`https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/alert_1_Yellow.png`)
             .addField(`System Time`, `${date} - ${time}:${second}\n`)
             .addField(`Current Build`, `${build_v}`)

@@ -1,5 +1,6 @@
 *.env
 *.err
+package-lock.json
 todo
 shard.js
 node_modules/

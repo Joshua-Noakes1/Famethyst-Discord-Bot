@@ -1,9 +1,10 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-const build_v = 0.4
-const command_count = 5
+const build_v = 1
+const command_count = 11
 console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
+//imports
 //whats .env
 require('dotenv').config();
 console.log('Loaded dotenv...')
@@ -32,7 +33,7 @@ client.on('ready', () => {
     client.user.setActivity("at the lake | ~help", {
         type: "PLAYING"
     });
-})
+});
 
 //messages what else
 client.on('message', message => {
@@ -71,4 +72,11 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.Bot_Token_Beta);
+client.login(process.env.Bot_Token).catch(err => {
+    console.log(err);
+    fs.writeFile(`./errors/error_with_Discord_API_on_${date}@${time}-${second}.err`, `--------------------\nThe Discord API broke at ${date} - ${file_time}:${second}\n\n${err}\n--------------------`, function (err) {
+        if (err) return console.log(err);
+        console.log(`Logged the error with the Discord API that occured on ${date} @ ${file_time}:${second}`);
+        return;
+    });
+});

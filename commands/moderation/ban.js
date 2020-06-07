@@ -2,8 +2,11 @@ module.exports = {
     name: 'ban',
     description: 'ban command',
     execute(message, args, Client, Discord) {
+        message.delete({
+            timeout: 1
+        });
         //lets hope the sanity checks work...
-        if (message.member.roles.cache.some(j => j.name === 'Joshua')) {
+        if (message.member.roles.cache.some(mg => mg.name === 'Mini-gods') || message.member.roles.cache.some(tg => tg.name === 'The Gods')) {
             //ban command
             let reason = args.slice(1).join(" ");
 
@@ -40,9 +43,6 @@ module.exports = {
                 }));
             }).catch(err => {
                 //lets catch an error so we dont break 
-                message.delete({
-                    timeout: 1
-                });
                 const catch_member = new Discord.MessageEmbed()
                     .setTitle('Something\'s Gone Wrong')
                     .setColor('0xFF0000')
