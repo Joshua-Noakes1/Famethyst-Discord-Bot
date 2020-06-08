@@ -34,4 +34,5 @@ Usage:
 Intro:     
 Unmutes a user  
 Usage:         
-```~unmute @user#0000, ~unmute @muted_user#4453``` 
+```~unmute @user#0000, ~unmute @muted_user#4453```               
+##### © Joshua Noakes 2020
