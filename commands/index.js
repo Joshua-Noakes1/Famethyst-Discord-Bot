@@ -13,5 +13,5 @@ module.exports = {
   unmute: require('./moderation/unmute'),
   //Fun Command
   cursed: require('./fun/cursed'),
-  fun: require('./fun/fun'),
+  meme: require('./fun/meme'),
 };

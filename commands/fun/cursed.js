@@ -58,12 +58,15 @@ module.exports = {
                 // Send result
                 const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
                 var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
+                const cursed_lev = ['1','2','3','4','5','6','7','8','9','10'];
+                var randomcursed_lev = cursed_lev[Math.floor(Math.random() * cursed_lev.length)];
                 const send_result = new Discord.MessageEmbed()
                     .setTitle(`Cursed ${searchq}`)
                     .setColor(`${randomcolorcodes}`)
                     .setImage(`${cursed_url}`)
                     .setDescription(`[Click here](${cursed_url}) for the full image`)
-                    .setTimestamp();
+                    .setTimestamp()
+                    .setFooter(`Cursed level: ${randomcursed_lev}/10`);
                 message.channel.send(send_result);
                 //  message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
             });
