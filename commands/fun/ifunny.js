@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'cursed',
+    name: 'ifunny',
     description: 'Testing if the bot works',
     execute(message, args, Client, Discord, build_v, command_count) {
         var date_master = new Date();
@@ -8,7 +8,7 @@ module.exports = {
         var file_time = date_master.getHours() + ":" + date_master.getMinutes();
         var second = date_master.getSeconds();
         const fetch = require('node-fetch');
-        let subreddit = `cursedimages`;
+        let subreddit = `funny`;
         const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
         var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
         fetch(`http://meme-api.herokuapp.com/gimme/${subreddit}`)
@@ -43,7 +43,7 @@ module.exports = {
                     .setImage(json.url)
                     .setURL(json.postLink)
                     .setTimestamp()
-                    .setFooter(`r/${json.subreddit}`)
+                    .setFooter(`ifunny.co on reddit`)
                 message.channel.send(reddit_embed)
             }).catch(error => {
                 fs.writeFile(`./errors/error_with_reddit_on_${date}@${time}-${second}.err`, `--------------------\n${Client.user.tag} has had an error\nit occured at ${date} - ${file_time}:${second}\nThe affected command is reddit.js\nThe bot is running build ${build_v} and had ${command_count} commands loaded\nthe error is: ${error}\n--------------------`, function (err) {

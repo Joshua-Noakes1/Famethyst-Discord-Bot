@@ -1,78 +1,65 @@
 module.exports = {
     name: 'meme',
     description: 'Testing if the bot works',
-    execute(message, args, Client, Discord) {
-        const cheerio = require('cheerio');
-        const request = require('request');
-
-        let searchq = args.slice(0).join(" ");
-
-        if (!searchq) {
-            const no_searchq = new Discord.MessageEmbed()
-                .setTitle(`I need something to meme`)
-                .setColor(`0xFF0000`)
-                .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
-                .setDescription(`Hey, ${message.member.displayName} i need something to meme`)
-                .setTimestamp();
-            message.channel.send(no_searchq);
-            return;
-        };
-        image(message)
-
-        function image(message) {
-
-            var options = {
-                url: "http://results.dogpile.com/serp?qc=images&q=" + `${searchq}` + ` meme`,
-                method: "GET",
-                headers: {
-                    "Accept": "text/html",
-                    "User-Agent": "Chrome"
-                }
-            };
-
-            request(options, function (error, response, responseBody) {
-                if (error) {
-                    return;
-                }
-
-
-                $ = cheerio.load(responseBody);
-
-
-                var links = $(".image a.link");
-
-                var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-
-                if (!urls.length) {
-                    const no_urls = new Discord.MessageEmbed()
-                        .setTitle(`I can\'t meme ${searchq}`)
-                        .setColor(`0xFF0000`)
-                        .setThumbnail(`https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png`)
-                        .setDescription(`I can\'t find any memes images for ${searchq}\nTry and search again...`)
+    execute(message, args, Client, Discord, build_v, command_count) {
+        var date_master = new Date();
+        var date = date_master.toISOString().slice(0, 10);
+        var time = date_master.getHours() + "-" + date_master.getMinutes();
+        var file_time = date_master.getHours() + ":" + date_master.getMinutes();
+        var second = date_master.getSeconds();
+        const fetch = require('node-fetch');
+        let subreddit = `memes`;
+        const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
+        var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
+        fetch(`http://meme-api.herokuapp.com/gimme/${subreddit}`)
+            .then(res => res.json())
+            .then(json => {
+                const title = json.title
+                if (title === undefined) {
+                    const not_found = new Discord.MessageEmbed()
+                        .setTitle(`Images not found for r\/${subreddit}`)
+                        .setColor('0xFF0000')
+                        .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
+                        .setDescription(`Hey, ${message.member.displayName} I don't think r/${subreddit} has images!\nTry a diffrent subreddit`)
                         .setTimestamp();
-                    message.channel.send(no_urls);
+                    message.channel.send(not_found);
                     return;
                 };
-
-                const cursed_url = urls[Math.floor(Math.random() * urls.length)];
-                // Send result
-                const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
-                var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
-                const cursed_lev = ['1','2','3','4','5','6','7','8','9','10'];
-                var randomcursed_lev = cursed_lev[Math.floor(Math.random() * cursed_lev.length)];
-                const cap_searchq = searchq.charAt(0).toUpperCase();
-                const searchq_rest = searchq.slice(1)
-                const send_result = new Discord.MessageEmbed()
-                    .setTitle(`${cap_searchq}`+`${searchq_rest}`+` memes`)
-                    .setColor(`${randomcolorcodes}`)
-                    .setImage(`${cursed_url}`)
-                    .setDescription(`[Click here](${cursed_url}) for the full image`)
+                if (json.nsfw) {
+                    if (!message.channel.nsfw) {
+                        const not_nsfw_channel = new Discord.MessageEmbed()
+                            .setTitle(`We've found an NSFW post!`)
+                            .setColor('0x483D8B')
+                            .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/alert_1_Yellow.png')
+                            .setDescription(`Hey, ${message.member.displayName} I've found an NSFW post\nTo view NSFW posts goto an NSFW channel in ${message.guild.name}!`)
+                            .setTimestamp();
+                        message.channel.send(not_nsfw_channel);
+                        return;
+                    };
+                };
+                const reddit_embed = new Discord.MessageEmbed()
+                    .setTitle(json.title)
+                    .setColor(randomcolorcodes)
+                    .setImage(json.url)
+                    .setURL(json.postLink)
                     .setTimestamp()
-                    .setFooter(`Meme level: ${randomcursed_lev}/10`);
-                message.channel.send(send_result);
-                //  message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
-            });
-        }
-
+                    .setFooter(`r/${json.subreddit}`)
+                message.channel.send(reddit_embed)
+            }).catch(error => {
+                fs.writeFile(`./errors/error_with_reddit_on_${date}@${time}-${second}.err`, `--------------------\n${Client.user.tag} has had an error\nit occured at ${date} - ${file_time}:${second}\nThe affected command is reddit.js\nThe bot is running build ${build_v} and had ${command_count} commands loaded\nthe error is: ${error}\n--------------------`, function (err) {
+                    if (err) return console.log(err);
+                    console.log(`Logged the error with reddit.js that occured on ${date} @ ${file_time}:${second}`);
+                    const titlequotes = ['our time traveling trees never predicted!', 'our observant grasshoppers missed!'];
+                    var titlequotes_random = titlequotes[Math.floor(Math.random() * titlequotes.length)];
+                    const main_message_error = new Discord.MessageEmbed()
+                        .setTitle(`An error has occured with "reddit"`)
+                        .setColor('0xFF0000')
+                        .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
+                        .setDescription(`Hey, ${message.member.displayName} something's gone wrong that ${titlequotes_random}\n\nThe problem's been logged on our side and the code monkeys are hard working on a fix!`)
+                        .setTimestamp();
+                    message.channel.send(main_message_error);
+                    return;
+                });
+            })
     },
 };

@@ -26,7 +26,6 @@ module.exports = {
                 }));
                 return;
             }
-
             if (!message.guild.me.hasPermission("KICK_MEMBERS")) return;
             //kick code
             const kickMember = message.mentions.members.first();
