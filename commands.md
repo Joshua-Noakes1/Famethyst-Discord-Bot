@@ -25,7 +25,7 @@ This command finds images from ifunny.co.
 Usage:  
 ```~ifunny```  
 ### reddit  
-Info:
+Info:  
 This command lets you get a random image from any subreddit.
 If it finds an NSFW tagged post you'll get an image \\\/
 ![NSFW_Post](https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Readme/Commands.md/Post-ex-01-NSFW.png)  
