@@ -14,6 +14,7 @@ module.exports = {
             .addField(`Current Build`, `${build_v}`)
             .addField(`Current Ping`, `${Client.ws.ping}ms`)
             .addField(`Commands Loaded`, `${command_count}`)
+            .addField(`Release Codename`, `GoldenLeaf`)
             .setTimestamp();
             message.channel.send(debug_embed);
     },
