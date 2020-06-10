@@ -34,7 +34,7 @@ Usage:
 ### isearch  
 Info:
 Finds a random image from our selected [search engine](https://dogpile.com).  
-Usage:
+Usage:  
 ```~isearch 'image query', ~isearch cursed images```  
 ## Moderation
 ### Kick     
