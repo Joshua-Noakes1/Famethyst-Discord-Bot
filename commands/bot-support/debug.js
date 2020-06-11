@@ -1,7 +1,7 @@
 module.exports = {
     name: 'debug',
     description: 'This is built to crash the bot.',
-    execute(message, args, Client, Discord, build_v, command_count) {
+    execute(message, args, Client, Discord, build_v, command_count, Bot_Codename) {
         var date_master = new Date();
         var date = date_master.toISOString().slice(0, 10);
         var time = date_master.getHours() + ":" + date_master.getMinutes();
@@ -14,7 +14,7 @@ module.exports = {
             .addField(`Current Build`, `${build_v}`)
             .addField(`Current Ping`, `${Client.ws.ping}ms`)
             .addField(`Commands Loaded`, `${command_count}`)
-            .addField(`Release Codename`, `GoldenLeaf`)
+            .addField(`Release Codename`, `bluebarn`)
             .setTimestamp();
             message.channel.send(debug_embed);
     },

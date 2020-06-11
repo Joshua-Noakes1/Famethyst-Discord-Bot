@@ -1,7 +1,8 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-const build_v = "1.0.0.1gm"
+const build_v = "1.0.0.2bb"
 const command_count = 15
+const Bot_Codename = "bluebarn"
 console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
 //imports
@@ -23,11 +24,11 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const clientcommands = require('./commands');
 console.log('Configured the discord API...')
-const prefix = '~';
+const prefix = '!~';
 Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
-console.log(`Current loaded commands ${command_count}...\nFinalising the bot\'s login configuration.\n--------------------`)
+console.log(`Codename ${Bot_Codename}...\nCurrent loaded commands ${command_count}...\nFinalising the bot\'s login configuration.\n--------------------`)
 //the magic connection to discord potato servers
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -46,7 +47,7 @@ client.on('message', message => {
     if (!client.commands.has(command)) return;
 
     try {
-        client.commands.get(command).execute(message, args, client, Discord, build_v, command_count, async);
+        client.commands.get(command).execute(message, args, client, Discord, build_v, command_count, async, Bot_Codename);
     } catch (error) {
         //when things go wrong.
         //Logging error in errors.txt
@@ -70,7 +71,7 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.Bot_Token).catch(err => {
+client.login(process.env.Bot_Token_Beta).catch(err => {
     console.log(err);
     fs.writeFile(`./errors/error_with_Discord_API_on_${date}@${time}-${second}.err`, `--------------------\nThe Discord API broke at ${date} - ${file_time}:${second}\n\n${err}\n--------------------`, function (err) {
         if (err) return console.log(err);

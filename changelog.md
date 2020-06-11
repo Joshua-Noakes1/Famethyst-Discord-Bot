@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0.2bb:bluebarn] 2020-06-11
+### Added
+- water.js
+
+### Removed
+- isearch.js "Apparently dogpile doesn't work on oracle"  
+
 ## [1.0.0.1gm:goldenleaf] 2020-06-10
 ### Added
 - ifunny.js
