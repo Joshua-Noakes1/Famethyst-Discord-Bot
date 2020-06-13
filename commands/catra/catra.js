@@ -6,8 +6,11 @@ module.exports = {
         var random_images_of_catra = images_of_catra[Math.floor(Math.random() * images_of_catra.length)];
         const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
         var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
+        const randomtitles = [`${message.member.displayName} you should watch she-ra`,'I mean I love the gayness of this show 💜 💜'];
+        var random_titles = randomtitles[Math.floor(Math.random() * randomtitles.length)];
         var url = random_images_of_catra;
         const catra_embed = new Discord.MessageEmbed()
+        .setTitle(random_titles)
         .setColor(randomcolorcodes)
         .setImage(url)
         .setURL(url)
