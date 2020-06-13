@@ -15,8 +15,8 @@ module.exports = {
   cursed: require('./fun/cursed'),
   meme: require('./fun/meme'),
   reddit: require('./fun/reddit'),
- // isearch: require('./fun/isearch'),
   ifunny: require('./fun/ifunny'),
   cursedcats: require('./fun/cursedcat'),
   water: require('./fun/water'),
+  catra: require('./catra/catra'),
 };

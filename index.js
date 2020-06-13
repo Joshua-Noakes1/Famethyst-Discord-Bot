@@ -1,8 +1,8 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-const build_v = "1.0.0.2bb"
+const build_v = "1.0.0.3"
 const command_count = 15
-const Bot_Codename = "bluebarn"
+const Bot_Codename = "brightlight"
 console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
 //imports
@@ -24,7 +24,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const clientcommands = require('./commands');
 console.log('Configured the discord API...')
-const prefix = '!~';
+const prefix = '~';
 Object.keys(clientcommands).map(key => {
     client.commands.set(clientcommands[key].name, clientcommands[key]);
 });
@@ -32,7 +32,7 @@ console.log(`Codename ${Bot_Codename}...\nCurrent loaded commands ${command_coun
 //the magic connection to discord potato servers
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
-    client.user.setActivity(`at the lake | ${prefix}help`, {
+    client.user.setActivity(`at the lake | ${prefix}help | Version ${build_v}`, {
         type: "PLAYING"
     });
 });
@@ -71,7 +71,7 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.Bot_Token_Beta).catch(err => {
+client.login(process.env.Bot_Token).catch(err => {
     console.log(err);
     fs.writeFile(`./errors/error_with_Discord_API_on_${date}@${time}-${second}.err`, `--------------------\nThe Discord API broke at ${date} - ${file_time}:${second}\n\n${err}\n--------------------`, function (err) {
         if (err) return console.log(err);

@@ -35,7 +35,12 @@ This command lets you get a random image from any subreddit.
 If it finds an NSFW tagged post you'll get a message telling you \\\/  
 ![NSFW_Post](https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Readme/Commands.md/Post-ex-01-NSFW.png)  
 Usage:  
-```~reddit subreddit, ~reddit memes```   
+```~reddit subreddit, ~reddit memes```  
+### Catra   
+Info:  
+This command get a random image of catra from she-ra.  
+Usage:  
+```~catra```  
 ## Moderation
 ### Kick     
 Info:     
