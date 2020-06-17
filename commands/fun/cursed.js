@@ -3,7 +3,7 @@ module.exports = {
     description: 'Testing if the bot works',
     execute(message, args, Client, Discord, build_v, command_count) {
         var date_master = new Date();
-        var date = date_master.toISOString().slice(0, 10);``
+        var date = date_master.toISOString().slice(0, 10); ``
         var time = date_master.getHours() + "-" + date_master.getMinutes();
         var file_time = date_master.getHours() + ":" + date_master.getMinutes();
         var second = date_master.getSeconds();

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0.4:terraceroof] 2020-06-17  
+### Added  
+- change-user-activity.js
+- she-ra.js
+
+### Removed  
+- kick.js
+- ban.js
+- mute.js
+- unmute.js 
+
+### Changed 
+- reddit.js (The args to support spaces)
+
 ## [1.0.0.3:brightlight] 2020-06-13
 ### Added 
 - Catra.js

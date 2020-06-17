@@ -4,13 +4,9 @@ module.exports = {
   crash: require('./bot-support/crash'),
   ping: require('./bot-support/ping'),
   debug: require('./bot-support/debug'),
+  changeuseractivity: require('./bot-support/change-user-activity'),
   //help command
   help: require('./help/index'),
-  //Moderation Command
-  kick: require('./moderation/kick'),
-  ban: require('./moderation/ban'),
-  mute: require('./moderation/mute'),
-  unmute: require('./moderation/unmute'),
   //Fun Command
   cursed: require('./fun/cursed'),
   meme: require('./fun/meme'),
@@ -18,5 +14,7 @@ module.exports = {
   ifunny: require('./fun/ifunny'),
   cursedcats: require('./fun/cursedcat'),
   water: require('./fun/water'),
-  catra: require('./catra/catra'),
+  //She-ra
+  catra: require('./She-ra/catra'),
+  shera: require('./She-ra/she-ra'),
 };

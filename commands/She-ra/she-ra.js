@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'reddit',
+    name: 'shera',
     description: 'Testing if the bot works',
     execute(message, args, Client, Discord, build_v, command_count) {
         var date_master = new Date();
@@ -8,19 +8,9 @@ module.exports = {
         var file_time = date_master.getHours() + ":" + date_master.getMinutes();
         var second = date_master.getSeconds();
         const fetch = require('node-fetch');
-        let subreddit = args.slice(1).join(" ");
+        let subreddit = 'sheranetflix';
         const randomcolor = ['0x008080', '0x4682B4', '0x191970', '0x4169E1', '0x6A5ACD', '0x9370DB'];
         var randomcolorcodes = randomcolor[Math.floor(Math.random() * randomcolor.length)];
-        if (!subreddit) {
-            const no_subreddit = new Discord.MessageEmbed()
-                .setTitle(`I need a subreddit`)
-                .setColor('0xFF0000')
-                .setThumbnail('https://raw.githubusercontent.com/Joshua-Noakes1/Lake-CDN/master/CDN/Images/Errors/error_1_red.png')
-                .setDescription(`Hey, ${message.member.displayName} i need a subreddit to look for images!`)
-                .setTimestamp();
-            message.channel.send(no_subreddit);
-            return;
-        };
         fetch(`http://meme-api.herokuapp.com/gimme/${subreddit}`)
             .then(res => res.json())
             .then(json => {

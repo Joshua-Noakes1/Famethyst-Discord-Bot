@@ -1,8 +1,8 @@
 // The Lake discord moderation bot, Lake is a basic discord moderation bot, it might become more advanced later.
 // Lake Config - The config for the bot to connect to discord and grab modules.
-const build_v = "1.0.0.3"
-const command_count = 15
-const Bot_Codename = "brightlight"
+const build_v = "1.0.0.4"
+const command_count = 13
+const Bot_Codename = "terraceroof"
 console.log(`Lake Discord Bot Beta Build ${build_v}\n--------------------\nInitialising the bot\'s login configuration...`);
 
 //imports
@@ -47,7 +47,7 @@ client.on('message', message => {
     if (!client.commands.has(command)) return;
 
     try {
-        client.commands.get(command).execute(message, args, client, Discord, build_v, command_count, async, Bot_Codename);
+        client.commands.get(command).execute(message, args, client, Discord, build_v, command_count, async, Bot_Codename, prefix);
     } catch (error) {
         //when things go wrong.
         //Logging error in errors.txt
@@ -71,7 +71,7 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.Bot_Token).catch(err => {
+client.login(process.env.Bot_Token_Beta).catch(err => {
     console.log(err);
     fs.writeFile(`./errors/error_with_Discord_API_on_${date}@${time}-${second}.err`, `--------------------\nThe Discord API broke at ${date} - ${file_time}:${second}\n\n${err}\n--------------------`, function (err) {
         if (err) return console.log(err);

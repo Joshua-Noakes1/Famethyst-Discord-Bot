@@ -40,26 +40,11 @@ Usage:
 Info:  
 This command get a random image of catra from she-ra.  
 Usage:  
-```~catra```  
-## Moderation
-### Kick     
-Info:     
-Kicks a user from the server    
-Usage:         
-```~kick @user#0000 (Optional: Reason), ~kick @kicked_user#4453 raid```         
-### Ban
-Info:     
-Bans a user from the server    
-Usage:         
-```~ban @user#0000, ~ban @banned_user#4453```          
-### Mute 
-Info:     
-Mutes a user  
-Usage:         
-```~mute @user#0000, ~mute @muted_user#4453```        
-### Unmute      
-Info:     
-Unmutes a user  
-Usage:         
-```~unmute @user#0000, ~unmute @muted_user#4453```               
+```~catra```    
+### Shera  
+Info:  
+This command get a random image from r/sheranetflix.  
+Usage:  
+```~shera```  
+     
 ##### © Joshua Noakes 2020
